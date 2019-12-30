@@ -1,0 +1,9 @@
+{
+  "name": "auto-trade-guan-framework",
+  "version": "0.0.0",
+  "description": "AutoTradeGuanFramework",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
