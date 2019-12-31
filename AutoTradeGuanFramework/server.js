@@ -1,8 +1,11 @@
 'use strict';
-var http = require('http');
-var port = process.env.PORT || 1337;
 
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(port);
+const Warder = require('./warder/Warder');
+
+var warder = new Warder();
+
+warder.subscribe(d => {
+    console.log("d:"+d);
+});
+
+warder.setValue(33);
