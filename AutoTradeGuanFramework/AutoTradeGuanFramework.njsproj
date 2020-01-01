@@ -31,8 +31,8 @@
   <ItemGroup>
     <Compile Include="comm\Value.js" />
     <Compile Include="server.js" />
-    <Compile Include="warder\ObservableWarder.js" />
     <Compile Include="warder\Warder.js" />
+    <Compile Include="warder\WarderReactiver.js" />
     <Compile Include="warder\WarderUtils.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />

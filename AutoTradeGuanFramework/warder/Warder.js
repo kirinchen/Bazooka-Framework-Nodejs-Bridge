@@ -5,6 +5,17 @@ class Warder extends Value {
 
     observers = [];
     curValue = null;
+    key;
+
+
+    constructor(_k) {
+        super();
+        this.key = _k;
+    }
+
+    get key() {
+        return this.key;
+    }
 
     value() {
         return this.curValue;
@@ -27,7 +38,7 @@ class Warder extends Value {
     _notifyAll() {
         for (var i = 0; i < this.observers.length; i++) {
             var obs = this.observers[i];
-            obs.call(null, this.curValue);
+            obs.call(null, this);
         }
     }
 
