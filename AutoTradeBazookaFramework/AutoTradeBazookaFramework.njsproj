@@ -2,15 +2,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>AutoTradeGuanFramework</Name>
-    <RootNamespace>AutoTradeGuanFramework</RootNamespace>
+    <Name>AutoTradeBazookaFramework</Name>
+    <RootNamespace>AutoTradeBazookaFramework</RootNamespace>
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>3e5c616f-384b-481f-bf62-ca97f55da2f3</ProjectGuid>
+    <ProjectGuid>4a9cba2a-d291-4f4a-b4bf-a6cba2369076</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>server.js</StartupFile>
     <SearchPath>
@@ -29,7 +29,11 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="comm\Value.js" />
+    <Compile Include="Reactive\BaseReactive.js" />
+    <Compile Include="Reactive\Lambda.js" />
+    <Compile Include="Reactive\Reactive.js" />
+    <Compile Include="Reactive\Subscribe.js" />
+    <Compile Include="Reactive\Where.js" />
     <Compile Include="server.js" />
     <Compile Include="warder\Warder.js" />
     <Compile Include="warder\WarderReactiver.js" />
@@ -38,7 +42,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="comm\" />
+    <Folder Include="Reactive\" />
     <Folder Include="warder\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

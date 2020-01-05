@@ -47,5 +47,5 @@ class Warder extends Value {
 
 module.exports = withIs(Warder, {
     className: 'Warder',
-    symbolName: '@net/surfm/guan',
+    symbolName: '@net/surfm/bzk',
 });

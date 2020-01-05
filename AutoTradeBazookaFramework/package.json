@@ -1,7 +1,7 @@
 {
-  "name": "auto-trade-guan-framework",
+  "name": "auto-trade-bazooka-framework",
   "version": "0.0.0",
-  "description": "AutoTradeGuanFramework",
+  "description": "AutoTradeBazookaFramework",
   "main": "server.js",
   "author": {
     "name": ""
