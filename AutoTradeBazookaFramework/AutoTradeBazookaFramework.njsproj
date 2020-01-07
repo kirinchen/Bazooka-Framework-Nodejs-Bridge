@@ -29,10 +29,19 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Reactiver.js" />
     <Compile Include="Reactive\BaseReactive.js" />
+    <Compile Include="Reactive\Do.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Reactive\Lambda.js" />
     <Compile Include="Reactive\Reactive.js" />
-    <Compile Include="Reactive\Subscribe.js" />
+    <Compile Include="Reactive\ReactiveUtils.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reactive\RootReactive.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Reactive\Where.js" />
     <Compile Include="server.js" />
     <Compile Include="warder\Warder.js" />

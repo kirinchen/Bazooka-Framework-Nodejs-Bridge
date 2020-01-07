@@ -4,7 +4,9 @@ const Lambda = require('./Lambda');
 class Where extends Lambda {
 
     run() {
-        
+        var b = this.action().call(null, this.reactive().map());
+        if (!b) return;
+        reactive().next().launch();
     }
 
 }
