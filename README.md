@@ -13,3 +13,30 @@
 * Integrate trading strategies and APIs to make it more scalable and consistent. 
 > * DRY for any auto trade or trade almost code.
 > * can Cross use different API
+
+## Usage
+
+## Investors Baisc Usage
+
+```javascript
+const Reactiver = require('Reactiver');
+const BTCWarder = /* BTCWarder it`s extends require('./warder/Warder'); */
+const OilWarder = /* OilWarder it`s extends require('./warder/Warder'); */
+const oilAPI = /* ; */
+
+var btcWarder = new BTCWarder({Some Cofig});
+var oilWarder = new OilWarder({Some Cofig});
+
+
+Reactiver.observe([btcWarder,oilWarder])
+    .where(_d => {
+        return _d.btcWarder.value() > 9000 && _d.oilWarder.value() < 30;
+    })
+    .subscribe(_d => {
+      oilAPI.order({Some Cofig});
+    });
+
+
+```
+
+
