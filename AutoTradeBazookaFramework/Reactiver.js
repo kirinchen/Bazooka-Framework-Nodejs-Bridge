@@ -1,4 +1,4 @@
-﻿const RootReactive = require('./Reactive/RootReactive');
+﻿const RootReactive = require('./reactive/RootReactive');
 
 module.exports = {
     observe: function (ws) {
