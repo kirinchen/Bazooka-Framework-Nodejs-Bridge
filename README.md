@@ -28,11 +28,11 @@ var btcWarder = new BTCWarder({Some Cofig});
 var oilWarder = new OilWarder({Some Cofig});
 
 
-Reactiver.observe([btcWarder,oilWarder])
-    .where(_d => {
+Reactiver.observe([btcWarder,oilWarder])  // 監控變數
+    .where(_d => {  //設定條件門檻
         return _d.btcWarder.value() > 9000 && _d.oilWarder.value() < 30;
     })
-    .subscribe(_d => {
+    .subscribe(_d => {  // 下單邏輯
       oilAPI.order({Some Cofig});
     });
 
