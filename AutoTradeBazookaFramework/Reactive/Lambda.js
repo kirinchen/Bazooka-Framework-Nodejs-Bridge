@@ -3,22 +3,21 @@ const Reactive = require('./Reactive');
 
 class Lambda {
 
-    reactive;
-    action;
+    _reactive;
+    _action;
 
-    constructor(_r,_a) {
-        this.reactive = _r;
-        if (!Reactive.isPerson(this.reactive)) throw new Error(this.reactive + " is not Reactive");
-        this.action = _a;
+    constructor(_r, _a) {
+        this._reactive = _r;
+        this._action = _a;
         if (!this.run) throw new Error("run not define");
     }
 
-    get reactive() {
-        return this.reactive;
+    reactive() {
+        return this._reactive;
     }
 
-    get action() {
-        return this.action;
+    action() {
+        return this._action;
     }
 }
 

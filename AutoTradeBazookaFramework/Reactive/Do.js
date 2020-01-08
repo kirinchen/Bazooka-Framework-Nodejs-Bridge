@@ -4,8 +4,8 @@ const Lambda = require('./Lambda');
 class Do extends Lambda {
 
     run() {
-        this.action().call(null, reactive().map());
-        var n = reactive().next();
+        if (this.action()) this.action().call(null, this.reactive().map());
+        var n = this.reactive().next();
         if (n == null) return;
         n.launch();
     }

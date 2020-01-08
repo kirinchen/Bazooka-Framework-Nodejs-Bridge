@@ -5,16 +5,16 @@ class Warder extends Value {
 
     observers = [];
     curValue = null;
-    key;
+    _key;
 
 
     constructor(_k) {
         super();
-        this.key = _k;
+        this._key = _k;
     }
 
-    get key() {
-        return this.key;
+    key() {
+        return this._key;
     }
 
     value() {

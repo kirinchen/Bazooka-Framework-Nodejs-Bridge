@@ -1,9 +1,8 @@
-﻿function Reactiver() {
+﻿const RootReactive = require('./Reactive/RootReactive');
 
-    var self = this;
-
-
-
-}
-
-module.exports = Reactiver;
+module.exports = {
+    observe: function (ws) {
+        var rr = new RootReactive(ws);
+        return rr;
+    }
+};

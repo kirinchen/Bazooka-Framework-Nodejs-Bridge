@@ -1,55 +1,60 @@
 const withIs = require('class-is');
 const Lambda = require('./Lambda');
+const RootReactive = require('./RootReactive');
 
 class Reactive {
 
-    map = null;
-    next = null;
-    before = null;
-    action;
+    _root = null;
+    _next = null;
+    _before = null;
+    _action;
 
-    constructor(_b, _w) {
-        this.map = _w;
-        this.before = _b;
-        if (this.before != null) {
-            if (!this.before instanceof Reactive) throw new Error(this.before +" is not Reactive");
-            this.before.setNext(this);
+    constructor(_b, _r) {
+        this._root = _r;
+        this._before = _b;
+        if (!this.map) throw new Error(this.className+" map not define");
+        if (this._before != null) {
+            if (!this._before instanceof Reactive) throw new Error(this._before +" is not Reactive");
+            this._before.setNext(this);
         }
     }
 
-    get map() {
-        return this.map;
+     next() {
+        return this._next;
     }
 
-    get next() {
-        return this.next;
+     before() {
+        return this._before;
     }
 
-    get before() {
-        return this.before;
+     hasNext() {
+        return this._next != null;
     }
 
-    get hasNext() {
-        return this.next != null;
+    setRoot(_r) {
+        this._root = _r;
     }
 
-    get isRoot() {
-        return this.before == null;
+    root() {
+        return this._root;
     }
 
-    set setAction(_a) {
-        if (!Lambda.isPerson(_a)) throw new Error(_a + " is not Lambda");
-        this.action = _a;
+     isRoot() {
+        return this._before == null;
     }
 
-    set setNext(_r) {
-        if (!Reactive.isPerson(_r)) throw new Error(_r + " is not Reactive");
-        this.next = _r;
+    setAction(_a) {
+        if (!_a instanceof Lambda) throw new Error(_a + " is not Lambda");
+        this._action = _a;
+    }
+
+    setNext(_r) {
+        if (!_r instanceof Reactive) throw new Error(_r + " is not Reactive");
+        this._next = _r;
     }
 
     launch() {
-        if (this.action != null) this.action.run();
-        
+        if (this._action != null) this._action.run();
     }
 
 }
