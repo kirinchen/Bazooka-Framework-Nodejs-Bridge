@@ -14,6 +14,7 @@
 > * DRY for any auto trade or trade almost code.
 > * can Cross use different API
 
+
 ## Usage
 
 ## Investors Baisc Usage
@@ -38,5 +39,18 @@ Reactiver.observe([btcWarder,oilWarder])  // 監控變數
 
 
 ```
+
+
+## Setup / Modify this Porject
+1. Install Nodejs and npm 
+2. Go to [Root]/AutoTradeBazookaFramework/ 
+3. type cmd : ``npm install``
+4. try is it working : ``node server.js``
+then show this :
+```
+d:[object Warder]
+d:[object Object]
+```
+
 
 
