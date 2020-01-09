@@ -1,6 +1,6 @@
 # AutoTrade Bazooka Framework
 
-## Introduction
+# Introduction
 
 * Investors can just focus Order strategy
 > * Monitoring value & Value threshold
@@ -15,7 +15,7 @@
 > * can Cross use different API
 
 
-## Usage
+# Usage
 
 ## Investors Baisc Usage
 
@@ -55,6 +55,26 @@ then show this :
 d:[object Warder]
 d:[object Object]
 ```
+## Third party API developer
+
+### main js (index.is) spec
+
+```javascript
+module.export={
+  name : 'unique name',
+  warders : {
+    catalogue:[
+    {
+      name: 'method1',
+      args:[],
+      ref: module.export.method1
+    }
+    ] ,
+    method1:(arts1...)=> //TODO
+  }
+}
+```
+
 
 
 
