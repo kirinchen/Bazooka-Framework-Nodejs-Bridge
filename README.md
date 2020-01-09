@@ -19,10 +19,14 @@
 
 ## Investors Baisc Usage
 
+1. ``` npm i bzk ```
+
+2. Follow this
+
 ```javascript
-const Reactiver = require('Reactiver');
-const BTCWarder = /* BTCWarder it`s extends require('./warder/Warder'); */
-const OilWarder = /* OilWarder it`s extends require('./warder/Warder'); */
+const Reactiver = require('bzk').Reactiver;
+const BTCWarder = /* BTCWarder it`s extends require('./warder/Warder'); Thirst Party*/
+const OilWarder = /* OilWarder it`s extends require('./warder/Warder'); Thirst Party */
 const oilAPI = /* ; */
 
 var btcWarder = new BTCWarder({Some Cofig});
