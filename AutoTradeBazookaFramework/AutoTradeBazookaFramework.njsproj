@@ -29,6 +29,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="index.js" />
     <Compile Include="Reactiver.js" />
     <Compile Include="Reactive\BaseReactive.js" />
     <Compile Include="Reactive\Do.js">

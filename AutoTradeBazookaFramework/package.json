@@ -1,9 +1,15 @@
 {
   "name": "bzk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "AutoTradeBazookaFramework",
-  "main": "server.js",
-  "author": "Kirin,Andy",
+  "main": "./index.js",
+  "author": "Kirin",
+  "contributors": [
+    {
+      "name": "Andy",
+      "email": "???@???.???"
+    }
+  ],
   "dependencies": {
     "class-is": "^1.1.0"
   },
