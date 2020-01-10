@@ -6,8 +6,7 @@
   "author": "Kirin",
   "contributors": [
     {
-      "name": "Andy",
-      "email": "???@???.???"
+      "name": "Andy"
     }
   ],
   "dependencies": {
@@ -27,7 +26,6 @@
   },
   "keywords": [
     "Auto",
-    "Trade",
     "Trade",
     "Bot"
   ],
