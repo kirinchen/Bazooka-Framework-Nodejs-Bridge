@@ -7,16 +7,16 @@ describe(" test app", function () {
     it("check Config", function () {
         var config = new Config({
             a: "af",
-            b: "bf"
-        });
-        config.append({
-            b: "bn",
+            b: "bf",
             c: "cn"
         });
-        assert.isTrue(Object.keys(config.data).length == 3);
-        assert.equal(config.data.a, "af");
-        assert.equal(config.data.b, "bf");
-        assert.equal(config.data.c, "cn");
+
+        console.log(config.size() + ":" + config.get('a'));
+        assert.isTrue(config.size() == 3);
+        assert.equal(config.get('a'), "af");
+        assert.equal(config.get('b'), "bf");
+        assert.equal(config.get('c'), "cn");
+        assert.equal(config.get('x',123), 123);
 
     });
 

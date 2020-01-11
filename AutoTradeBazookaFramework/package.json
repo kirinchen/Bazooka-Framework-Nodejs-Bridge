@@ -1,6 +1,6 @@
 {
   "name": "bzk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "AutoTradeBazookaFramework",
   "main": "./index.js",
   "author": "Kirin",
