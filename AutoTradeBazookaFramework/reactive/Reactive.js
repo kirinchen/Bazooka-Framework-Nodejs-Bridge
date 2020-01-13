@@ -1,6 +1,5 @@
 const withIs = require('class-is');
 const Lambda = require('./Lambda');
-const RootReactive = require('./RootReactive');
 
 class Reactive {
 

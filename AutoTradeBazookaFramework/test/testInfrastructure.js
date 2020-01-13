@@ -39,7 +39,7 @@ describe(" test app", function () {
             });
     });
 
-    it("run Async Do", function () {
+    it("run Async Do", async function () {
         var warder = new Warder("Test");
         warder.subscribe(d => {
             console.log("d:" + d);
@@ -51,13 +51,14 @@ describe(" test app", function () {
             })
             .do(async _d => {
                 console.log("Do d:" + JSON.stringify(_d));
-                await ReactiveUtils.waitSeconds(3, "QQ");
+                await ReactiveUtils.waitSeconds(500, "QQ");
                 console.log("End Do d:" + JSON.stringify(_d));
             })
             .subscribe(_d => {
                 console.log("d:" + JSON.stringify(_d));
                 assert.equal(_d.Test.value(), 33);
             });
+        let a = await ReactiveUtils.waitSeconds(1000, "QQ");
     });
 
     it("run Async ", async function () {

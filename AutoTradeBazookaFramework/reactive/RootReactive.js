@@ -1,10 +1,12 @@
 ﻿const withIs = require('class-is');
 const Warder = require('../warder/Warder');
 const BaseReactive = require('./BaseReactive');
+const RState = require('./RState');
 
 class RootReactive extends BaseReactive {
 
     wardersMap;
+    state = RState.Idle;
 
     constructor(warders) {
         super(null, null);
@@ -23,6 +25,21 @@ class RootReactive extends BaseReactive {
 
     map() {
         return this.wardersMap;
+    }
+
+    observe() {
+        for (const value of Object.values(this.wardersMap)) {
+            value.subscribe(this._onUpdate);
+        }
+    }
+
+    _onUpdate(_d) {
+        this.launch();
+    }
+
+    setState(st) {
+        RState.validate(st);
+        this.state = st;
     }
 
 

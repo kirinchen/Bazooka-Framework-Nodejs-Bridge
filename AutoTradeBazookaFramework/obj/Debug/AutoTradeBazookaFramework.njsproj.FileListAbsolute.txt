@@ -1,0 +1,2 @@
+C:\Users\DDT\Desktop\BZK\AutoTrade-Bazooka-Framework\AutoTradeBazookaFramework\obj\Debug\AutoTradeBazookaFramework.njsprojAssemblyReference.cache
+C:\Users\DDT\Desktop\BZK\AutoTrade-Bazooka-Framework\AutoTradeBazookaFramework\bin\Microsoft.NodejsTools.WebRole.dll

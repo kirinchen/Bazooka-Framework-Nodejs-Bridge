@@ -1,4 +1,5 @@
 ﻿const Reactive = require('./Reactive');
+const RState = require('./RState');
 
 module.exports = {
 
@@ -10,13 +11,14 @@ module.exports = {
         }
         return re;
     },
-    waitSeconds: function (sc,args) {
-        const p = new Promise(function (resolve, reject) {
-            setTimeout(function () {
-                resolve(args);
-            }, sc);
-        });
-        return p;
+    next: function (_re) {
+        var n = _re.next();
+        if (n == null) {
+            exports.shiftRoot(_re).setState(RState.EObserving);
+            return;
+        }
+        n.launch();
     }
+
 
 };

@@ -20,7 +20,7 @@ class BaseReactive extends Reactive {
 
     subscribe(cb) {
         this.do(cb);
-        ReactiveUtils.shiftRoot(this).launch();
+        ReactiveUtils.shiftRoot(this).observe();
     }
 
     map() {

@@ -50,8 +50,14 @@
     <Compile Include="warder\WarderUtils.js" />
     <Content Include="Config.js" />
     <Content Include="package.json" />
+    <Content Include="reactive\RState.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="README.md" />
     <Content Include="test\testInfrastructure.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="UntilsUtils.js">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
