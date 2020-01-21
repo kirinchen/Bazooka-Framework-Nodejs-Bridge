@@ -1,3 +1,0 @@
-﻿# AutoTradeGuanFramework
-
-

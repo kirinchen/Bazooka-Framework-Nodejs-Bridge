@@ -1,0 +1,5 @@
+interface Value {
+
+    value();
+
+}
