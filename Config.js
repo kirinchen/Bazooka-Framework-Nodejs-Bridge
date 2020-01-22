@@ -1,16 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class Config {
     constructor(cfg) {
-        this.data = new Map();
+        this.data = {};
         for (const [key, value] of Object.entries(cfg)) {
             this.data[key] = value;
         }
     }
-    get(path, _default) {
+    get(path, _default = null) {
         var ps = path.split('.');
         var cd = this.data;
         for (var i = 0; i < ps.length; i++) {
             var p = ps[i];
-            if (cd.has(p)) {
+            if (cd.hasOwnProperty(p)) {
                 cd = cd[p];
             }
             else {
@@ -20,7 +22,8 @@ class Config {
         return cd;
     }
     size() {
-        return this.data.size;
+        return Object.keys(this.data).length;
     }
 }
+exports.Config = Config;
 //# sourceMappingURL=Config.js.map

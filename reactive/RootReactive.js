@@ -25,8 +25,7 @@ class RootReactive extends BaseReactive_1.BaseReactive {
         }
     }
     onUpdate(_d) {
-        console.log("onUpdate a:" + this);
-        super.launch();
+        this.launch();
     }
     setState(st) {
         this.state = st;

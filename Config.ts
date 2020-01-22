@@ -1,5 +1,5 @@
-class Config {
-    data: Map<string, any> = new Map<string, any>();
+export class Config {
+    public data: Object = {};
 
     constructor(cfg) {
         for (const [key, value] of Object.entries(cfg)) {
@@ -7,12 +7,12 @@ class Config {
         }
     }
 
-    get(path: string, _default: any): any {
+    public get(path: string, _default: any = null): any {
         var ps = path.split('.');
         var cd = this.data;
         for (var i = 0; i < ps.length; i++) {
             var p = ps[i];
-            if (cd.has(p)) {
+            if (cd.hasOwnProperty(p)) {
                 cd = cd[p];
             } else {
                 return _default;
@@ -21,8 +21,8 @@ class Config {
         return cd;
     }
 
-    size(): number {
-        return this.data.size;
+    public size(): number {
+        return Object.keys(this.data).length;
     }
 
 

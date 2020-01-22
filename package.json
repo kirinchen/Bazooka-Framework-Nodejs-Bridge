@@ -17,5 +17,7 @@
     "mocha": "^7.0.0",
     "typescript": "^3.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/mocha": "^5.2.7"
+  }
 }

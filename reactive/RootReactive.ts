@@ -32,7 +32,7 @@ export class RootReactive extends BaseReactive {
     }
 
     public onUpdate(_d) {
-        console.log("onUpdate a:" + this);
+
         this.launch();
     }
 
