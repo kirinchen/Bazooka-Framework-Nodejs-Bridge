@@ -5,6 +5,9 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>AutoTradeBazookaFramework</Name>
     <RootNamespace>AutoTradeBazookaFramework</RootNamespace>
+    <JavaScriptTestFramework>mocha</JavaScriptTestFramework>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+    <JavaScriptTestRoot>test\</JavaScriptTestRoot>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -22,7 +25,7 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <NodejsPort>1337</NodejsPort>
     <EnableTypeScript>true</EnableTypeScript>
-    <StartWebBrowser>true</StartWebBrowser>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="server.ts" />
+    <Content Include="test\UnitTest.js">
+      <SubType>Code</SubType>
+      <TestFramework>Mocha</TestFramework>
+      <Publish>True</Publish>
+    </Content>
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -47,6 +55,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Config.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Reactiver.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="reactive\BaseReactive.ts">
@@ -72,10 +83,6 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="reactive\Where.ts">
       <SubType>Code</SubType>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="test\TestInfrastructure.ts">
-      <SubType>Code</SubType>
-      <TestFramework>Mocha</TestFramework>
     </TypeScriptCompile>
     <TypeScriptCompile Include="warder\Warder.ts">
       <SubType>Code</SubType>

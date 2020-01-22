@@ -1,4 +1,4 @@
-enum RState {
+export enum RState {
     Idle,
     Observing,
     Observed,

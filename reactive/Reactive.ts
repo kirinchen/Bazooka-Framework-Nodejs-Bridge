@@ -1,54 +1,58 @@
-abstract class Reactive {
-    _root: Reactive;
-    _next: Reactive;
-    _before: Reactive;
-    _action: Lambda;
+import { Warder } from "../warder/Warder";
+import { Lambda } from "../reactive/Lambda";
+
+export abstract  class Reactive {
+    public root: Reactive;
+    public next: Reactive;
+    public before: Reactive;
+    public action: Lambda = null;
 
     constructor(_b: Reactive, _r: Reactive) {
-        this._root = _r;
-        this._before = _b;
+        this.root = _r;
+        this.before = _b;
 
-        if (this._before != null) {
-            this._before.setNext(this);
+        if (this.before != null) {
+            this.before.setNext(this);
         }
+
     }
 
-    abstract map(): Map<string, Warder>;
+    public abstract map(): Map<string, Warder>;
 
-    next() {
-        return this._next;
+    public getNext() {
+        return this.next;
     }
 
-    before() {
-        return this._before;
+    getBefore() {
+        return this.before;
     }
 
-    hasNext() {
-        return this._next != null;
+    public hasNext() {
+        return this.next != null;
     }
 
-    setRoot(_r) {
-        this._root = _r;
+    public setRoot(_r) {
+        this.root = _r;
     }
 
-    root() {
-        return this._root;
+    public getRoot() {
+        return this.root;
     }
 
-    isRoot() {
-        return this._before == null;
+    public isRoot() {
+        return this.before == null;
     }
 
-    setAction(_a:Lambda ) {
-        this._action = _a;
+    public setAction(_a:Lambda ) {
+        this.action = _a;
     }
 
-    setNext(_r: Reactive) {
-        this._next = _r;
+    public setNext(_r: Reactive) {
+        this.next = _r;
     }
 
-    launch() {
-        if (this._action != null) this._action.run();
+    public launch() {
+        if (this.action != null) this.action.run();
     }
 
 }

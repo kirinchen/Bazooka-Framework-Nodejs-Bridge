@@ -1,16 +1,19 @@
+import { Warder } from "../warder/Warder";
+import { BaseReactive } from "./BaseReactive";
+import { RState } from "./RState";
 
-class RootReactive extends BaseReactive {
+export class RootReactive extends BaseReactive {
 
     wardersMap: Map<string, Warder>;
     state:RState  = RState.Idle;
 
-    constructor(warders) {
+    constructor(warders: Warder[]) {
         super(null, null);
         this.setRoot(this);
         this.wardersMap = this.genWarderMap(warders);
     }
 
-    genWarderMap(warders: Warder[] ) {
+    public genWarderMap(warders: Warder[] ) {
         var wdb = new Map<string, any>();
         warders.forEach(element => {
             wdb[element.key()] = element;
@@ -18,21 +21,22 @@ class RootReactive extends BaseReactive {
         return wdb;
     }
 
-    map(): Map<string, Warder> {
+    public map(): Map<string, Warder> {
         return this.wardersMap;
     }
 
-    observe() {
+    public observe() {
         for (const value of Object.values(this.wardersMap)) {
-            value.subscribe(this._onUpdate);
+            value.subscribe(this.onUpdate);
         }
     }
 
-    _onUpdate(_d) {
+    public onUpdate(_d) {
+        console.log("onUpdate a:" + this);
         this.launch();
     }
 
-    setState(st) {
+    public setState(st) {
         this.state = st;
     }
 

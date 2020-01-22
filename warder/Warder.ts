@@ -1,5 +1,6 @@
+import { Value } from "../comm/Value";
 
-class Warder implements Value {
+export  class Warder implements Value {
 
     observers = [];
     curValue = null;
@@ -35,7 +36,7 @@ class Warder implements Value {
     _notifyAll() {
         for (var i = 0; i < this.observers.length; i++) {
             var obs = this.observers[i];
-            obs.call(null, this);
+            obs.call(obs, this);
         }
     }
 

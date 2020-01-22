@@ -1,9 +1,10 @@
-class Where extends Lambda {
+import { Lambda } from "./Lambda";
+export class Where extends Lambda {
 
     run() {
         var b = this.action().call(null, this.reactive().map());
         if (!b) return;
-        this.reactive().next().launch();
+        this.reactive().getNext().launch();
     }
 
 }

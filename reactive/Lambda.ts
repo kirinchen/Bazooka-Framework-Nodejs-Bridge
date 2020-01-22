@@ -1,4 +1,6 @@
-abstract class Lambda {
+import { Reactive } from "./Reactive";
+
+export abstract class Lambda {
     _reactive: Reactive;
     _action: any;
 
