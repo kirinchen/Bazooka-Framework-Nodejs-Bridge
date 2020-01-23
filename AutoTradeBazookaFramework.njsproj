@@ -41,11 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="comm\" />
+    <Folder Include="run\" />
     <Folder Include="test\" />
     <Folder Include="warder\" />
     <Folder Include="reactive\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="BZKRunner.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="comm\Value.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
