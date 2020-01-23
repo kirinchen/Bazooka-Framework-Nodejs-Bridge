@@ -1,11 +1,12 @@
 import { Warder } from "../warder/Warder";
 import { BaseReactive } from "./BaseReactive";
 import { RState } from "./RState";
+import { WarderAction } from "../warder/WarderAction";
 
-export class RootReactive extends BaseReactive {
+export class RootReactive extends BaseReactive implements WarderAction {
 
     wardersMap: Map<string, Warder>;
-    state:RState  = RState.Idle;
+    state: RState = RState.Idle;
 
     constructor(warders: Warder[]) {
         super(null, null);
@@ -13,7 +14,7 @@ export class RootReactive extends BaseReactive {
         this.wardersMap = this.genWarderMap(warders);
     }
 
-    public genWarderMap(warders: Warder[] ) {
+    public genWarderMap(warders: Warder[]) {
         var wdb = new Map<string, any>();
         warders.forEach(element => {
             wdb[element.key()] = element;
@@ -26,13 +27,13 @@ export class RootReactive extends BaseReactive {
     }
 
     public observe() {
-        for (const value of Object.values(this.wardersMap)) {
-            value.subscribe(this.onUpdate);
+        for (let value of this.wardersMap.values()) {
+            value.subscribe(this);
         }
     }
 
     public onUpdate(_d) {
-
+        console.log("this:" + this);
         this.launch();
     }
 

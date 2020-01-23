@@ -20,11 +20,12 @@ class RootReactive extends BaseReactive_1.BaseReactive {
         return this.wardersMap;
     }
     observe() {
-        for (const value of Object.values(this.wardersMap)) {
-            value.subscribe(this.onUpdate);
+        for (let value of this.wardersMap.values()) {
+            value.subscribe(this);
         }
     }
     onUpdate(_d) {
+        console.log("this:" + this);
         this.launch();
     }
     setState(st) {

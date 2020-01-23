@@ -1,5 +1,5 @@
-import { Warder } from "./warder/Warder";
-import { RootReactive } from "./reactive/RootReactive";
+import { Warder } from "../warder/Warder";
+import { RootReactive } from "../reactive/RootReactive";
 
 
 export class Reactiver {

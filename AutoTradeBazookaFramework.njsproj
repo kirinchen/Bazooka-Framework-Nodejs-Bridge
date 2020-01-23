@@ -41,13 +41,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="comm\" />
+    <Folder Include="comm\delegate\" />
     <Folder Include="run\" />
     <Folder Include="test\" />
     <Folder Include="warder\" />
     <Folder Include="reactive\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="BZKRunner.ts">
+    <TypeScriptCompile Include="comm\delegate\ActionT1.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="comm\delegate\OOActionT1.ts" />
+    <TypeScriptCompile Include="comm\delegate\OOAction.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="run\BZKRunner.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="comm\delegate\Action.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="comm\Value.ts">
@@ -56,7 +67,7 @@
     <TypeScriptCompile Include="Config.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Reactiver.ts">
+    <TypeScriptCompile Include="run\Reactiver.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="reactive\BaseReactive.ts">
@@ -90,6 +101,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="warder\Warder.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="warder\WarderAction.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>

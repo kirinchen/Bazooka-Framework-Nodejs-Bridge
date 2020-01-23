@@ -1,8 +1,11 @@
 import { Value } from "../comm/Value";
+import { WarderAction } from "./WarderAction";
+import { Action } from "../comm/delegate/Action";
+import { ActionT1 } from "../comm/delegate/ActionT1";
 
 export  class Warder implements Value {
 
-    observers = [];
+    observers: Array<WarderAction> = new Array<WarderAction>();
     curValue = null;
     _key;
 
@@ -19,8 +22,12 @@ export  class Warder implements Value {
         return this.curValue;
     }
 
-    subscribe(ob) {
+    subscribe(ob: WarderAction) {
         this.observers.push(ob);
+    }
+
+    subscribeAction(ob: ActionT1<Warder>) {
+        this.observers.push(new WarderActionImpl(ob));
     }
 
     setValue(_d) {
@@ -36,8 +43,22 @@ export  class Warder implements Value {
     _notifyAll() {
         for (var i = 0; i < this.observers.length; i++) {
             var obs = this.observers[i];
-            obs.call(obs, this);
+            obs.onUpdate(this);
         }
+    }
+
+}
+
+class WarderActionImpl implements WarderAction {
+
+    action: ActionT1<Warder>;
+
+    constructor(_a: ActionT1<Warder>) {
+        this.action = _a;
+    }
+
+    onUpdate(t: Warder): void {
+        this.action.call(null,t);
     }
 
 }

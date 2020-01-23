@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 import { Config } from "../Config";
 import { Warder } from '../warder/Warder'
-import { Reactiver } from "../Reactiver";
+import { Reactiver } from "../run/Reactiver";
 import { UntilsUtils } from "../UntilsUtils";
 
 
@@ -25,7 +25,7 @@ describe(" test app", function () {
 
     it("base run", function () {
         var warder = new Warder("Test");
-        warder.subscribe(d => {
+        warder.subscribeAction(d => {
             console.log("d:" + d);
         });
         warder.setValue(33);
@@ -41,7 +41,7 @@ describe(" test app", function () {
 
     it("run Async Do", async function () {
         var warder = new Warder("Test");
-        warder.subscribe(d => {
+        warder.subscribeAction(d => {
             console.log("d:" + d);
         });
         warder.setValue(33);

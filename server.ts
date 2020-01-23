@@ -1,5 +1,7 @@
 import { Warder } from "./warder/Warder";
-import { Reactiver } from "./Reactiver";
+import { Reactiver } from "./run/Reactiver";
+import { BZKRunner } from "./run/BZKRunner";
+import { Config } from "./Config";
 /*import http = require('http');
 var port = process.env.port || 1337
 http.createServer(function (req, res) {
@@ -16,6 +18,10 @@ var warder = new Warder("Test");
 
 warder.setValue(33);*/
 
+let c = new Config({
+    a:"123"
+});
+
 Reactiver.observe([warder])
     .where(_d => {
         return true;
@@ -25,4 +31,8 @@ Reactiver.observe([warder])
     });
 
 warder.setValue(99);
+
+
+
+BZKRunner.getInstance(c).start();
 

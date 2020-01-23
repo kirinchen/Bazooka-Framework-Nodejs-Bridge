@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require('chai').assert;
 const Config_1 = require("../Config");
 const Warder_1 = require("../warder/Warder");
-const Reactiver_1 = require("../Reactiver");
+const Reactiver_1 = require("../run/Reactiver");
 const UntilsUtils_1 = require("../UntilsUtils");
 describe(" test app", function () {
     it("check Config", function () {
@@ -30,7 +30,7 @@ describe(" test app", function () {
     });
     it("base run", function () {
         var warder = new Warder_1.Warder("Test");
-        warder.subscribe(d => {
+        warder.subscribeAction(d => {
             console.log("d:" + d);
         });
         warder.setValue(33);
@@ -46,7 +46,7 @@ describe(" test app", function () {
     it("run Async Do", function () {
         return __awaiter(this, void 0, void 0, function* () {
             var warder = new Warder_1.Warder("Test");
-            warder.subscribe(d => {
+            warder.subscribeAction(d => {
                 console.log("d:" + d);
             });
             warder.setValue(33);
