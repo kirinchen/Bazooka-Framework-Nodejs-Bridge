@@ -1,11 +1,14 @@
 {
   "name": "auto-trade-bazooka-framework",
-  "version": "0.0.0",
+  "version": "0.0.5",
   "description": "AutoTradeBazookaFramework",
   "main": "server.js",
-  "author": {
-    "name": ""
-  },
+  "author": "Kirin",
+  "contributors": [
+    {
+      "name": "Andy"
+    }
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
@@ -19,5 +22,20 @@
   },
   "dependencies": {
     "@types/mocha": "^5.2.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirinchen/AutoTrade-Bazooka-Framework.git"
+  },
+  "keywords": [
+    "Auto",
+    "Trade",
+    "Bot",
+    "program trading"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirinchen/AutoTrade-Bazooka-Framework/issues"
+  },
+  "homepage": "https://github.com/kirinchen/AutoTrade-Bazooka-Framework#readme"
 }
