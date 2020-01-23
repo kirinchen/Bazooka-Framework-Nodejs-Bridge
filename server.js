@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Warder_1 = require("./warder/Warder");
 const Reactiver_1 = require("./run/Reactiver");
-const BZKRunner_1 = require("./run/BZKRunner");
+const BZKLauncher_1 = require("./run/BZKLauncher");
 const Config_1 = require("./Config");
+const Runer_1 = require("./run/Runer");
 /*import http = require('http');
 var port = process.env.port || 1337
 http.createServer(function (req, res) {
@@ -19,13 +20,16 @@ warder.setValue(33);*/
 let c = new Config_1.Config({
     a: "123"
 });
-Reactiver_1.Reactiver.observe([warder])
-    .where(_d => {
-    return true;
-})
-    .subscribe(_d => {
-    console.log("dobserve:" + _d);
-});
-warder.setValue(99);
-BZKRunner_1.BZKRunner.getInstance(c).start();
+BZKLauncher_1.BZKLauncher.getInstance(c)
+    .add(new Runer_1.Runer("test", rt => {
+    Reactiver_1.Reactiver.observe([warder])
+        .where(_d => {
+        return true;
+    })
+        .subscribe(_d => {
+        console.log("dobserve:" + _d);
+    });
+    warder.setValue(99);
+}))
+    .start();
 //# sourceMappingURL=server.js.map

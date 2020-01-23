@@ -55,7 +55,7 @@
     <TypeScriptCompile Include="comm\delegate\OOAction.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="run\BZKRunner.ts">
+    <TypeScriptCompile Include="run\BZKLauncher.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="comm\delegate\Action.ts">
@@ -92,6 +92,12 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="reactive\Where.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="run\Runer.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="run\RunTool.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="test\testInfrastructure.ts">

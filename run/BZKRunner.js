@@ -15,11 +15,18 @@ class BZKRunner {
         this.runners.push(t);
         return this;
     }
-    start() {
-        require('daemon')({
-            cwd: parseInt(process.versions.node) < 8 ? process.cwd : process.cwd(),
-            env: process.env,
-            stdio: ['pipe', process.stdout, process.stderr]
+    start(a) {
+        a();
+        var readline = require('readline');
+        var rl = readline.createInterface(process.stdin, process.stdout);
+        rl.setPrompt('guess> ');
+        rl.prompt();
+        rl.on('line', function (line) {
+            if (line === "right")
+                rl.close();
+            rl.prompt();
+        }).on('close', function () {
+            process.exit(0);
         });
     }
     static getInstance(_c) {

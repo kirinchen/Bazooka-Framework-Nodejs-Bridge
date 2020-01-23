@@ -9,6 +9,11 @@ class UntilsUtils {
         });
         return p;
     }
+    static openThread(t) {
+        setTimeout(function () {
+            t();
+        }, 0);
+    }
 }
 exports.UntilsUtils = UntilsUtils;
 //# sourceMappingURL=UntilsUtils.js.map
