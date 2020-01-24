@@ -67,7 +67,13 @@
     <TypeScriptCompile Include="Config.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="run\Reactiver.ts">
+    <TypeScriptCompile Include="run\DataProvider.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="run\ReactiveDataProvider.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="run\ReactiveGener.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="reactive\BaseReactive.ts">

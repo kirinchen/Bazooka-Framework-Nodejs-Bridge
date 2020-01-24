@@ -1,5 +1,3 @@
-import { Warder } from "../warder/Warder";
-import { RootReactive } from "../reactive/RootReactive";
 import { Config } from "../Config";
 
 export interface DataProvider {
@@ -8,10 +6,9 @@ export interface DataProvider {
 
 }
 
+
 enum BaseSrc {
     config
-
-
 
 }
 
@@ -28,23 +25,7 @@ export class BaseDataProvider implements DataProvider {
         return null;
     }
 
-    get config(): Config { return this._config; } 
+    get config(): Config { return this._config; }
 
-
-}
-
-export class Reactiver  {
-
-    baseData: BaseDataProvider;
-
-    constructor(bdp: BaseDataProvider) {
-        this.baseData = bdp;
-    }
-
-
-    observe(ws: Warder[]): RootReactive {
-        let rr = new RootReactive(this, ws);
-        return rr;
-    } 
 
 }

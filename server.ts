@@ -1,5 +1,5 @@
 import { Warder } from "./warder/Warder";
-import { Reactiver } from "./run/Reactiver";
+import { ReactiveGener } from "./run/ReactiveGener";
 import { BZKLauncher } from "./run/BZKLauncher";
 import { Config } from "./Config";
 import { Runer } from "./run/Runer";
@@ -28,7 +28,7 @@ let c = new Config({
 BZKLauncher.getInstance(c)
     .add(new Runer("test", rt => {
 
-        let r = new Reactiver(c);
+        let r = new ReactiveGener(c);
 
         r.observe([warder])
             .where(_d => {

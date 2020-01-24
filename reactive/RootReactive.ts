@@ -2,18 +2,18 @@ import { Warder } from "../warder/Warder";
 import { BaseReactive } from "./BaseReactive";
 import { RState } from "./RState";
 import { WarderAction } from "../warder/WarderAction";
-import { DataProvider } from "../run/Reactiver";
+import { DataProvider } from "../run/DataProvider";
+import { ReactiveDataProvider } from "../run/ReactiveDataProvider";
+
 
 export class RootReactive extends BaseReactive implements WarderAction {
-    _data: DataProvider;
-    wardersMap: Map<string, Warder>;
+    _data: ReactiveDataProvider;
     state: RState = RState.Idle;
 
     constructor(d: DataProvider, warders: Warder[]) {
         super(null, null);
-        this._data = d;
+        this._data = new ReactiveDataProvider(d, warders);
         this.setRoot(this);
-        this.wardersMap = this.genWarderMap(warders);
     }
 
     public genWarderMap(warders: Warder[]) {
@@ -24,12 +24,9 @@ export class RootReactive extends BaseReactive implements WarderAction {
         return wdb;
     }
 
-    public map(): Map<string, Warder> {
-        return this.wardersMap;
-    }
 
     public observe() {
-        for (let value of this.wardersMap.values()) {
+        for (let value of this._data.map().values()) {
             value.subscribe(this);
         }
     }

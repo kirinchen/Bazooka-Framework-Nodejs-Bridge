@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 import { Config } from "../Config";
 import { Warder } from '../warder/Warder'
-import { Reactiver } from "../run/Reactiver";
+import { ReactiveGener } from "../run/ReactiveGener";
 import { UntilsUtils } from "../UntilsUtils";
 
 
@@ -33,7 +33,7 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        let r = new Reactiver(c);
+        let r = new ReactiveGener(c);
         r.observe([warder])
             .where(_d => {
                 return true;
@@ -50,7 +50,7 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        let r = new Reactiver(c);
+        let r = new ReactiveGener(c);
         r.observe([warder])
             .where(_d => {
                 return true;
