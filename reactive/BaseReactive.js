@@ -7,6 +7,7 @@ const ReactiveUtils_1 = require("./ReactiveUtils");
 class BaseReactive extends Reactive_1.Reactive {
     constructor(_b, _r) {
         super(_b, _r);
+        this.ended = false;
     }
     where(wf) {
         var whe = new Where_1.Where(this, wf);
@@ -20,6 +21,13 @@ class BaseReactive extends Reactive_1.Reactive {
     }
     subscribe(cb) {
         this.do(cb);
+        this.ended = true;
+        //ReactiveUtils.shiftRoot(this).observe();
+        return this;
+    }
+    observe() {
+        if (!this.ended)
+            throw new Error("Not subscribe!!");
         ReactiveUtils_1.ReactiveUtils.shiftRoot(this).observe();
     }
     map() {

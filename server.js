@@ -22,13 +22,14 @@ let c = new Config_1.Config({
 });
 BZKLauncher_1.BZKLauncher.getInstance(c)
     .add(new Runer_1.Runer("test", rt => {
-    Reactiver_1.Reactiver.observe([warder])
+    let r = new Reactiver_1.Reactiver(c);
+    r.observe([warder])
         .where(_d => {
         return true;
     })
         .subscribe(_d => {
         console.log("dobserve:" + _d);
-    });
+    }).observe();
     warder.setValue(99);
 }))
     .start();

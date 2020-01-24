@@ -2,8 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const RootReactive_1 = require("../reactive/RootReactive");
 class Reactiver {
-    static observe(ws) {
-        let rr = new RootReactive_1.RootReactive(ws);
+    constructor(c) {
+        this.config = c;
+    }
+    getConfig() {
+        return this.config;
+    }
+    observe(ws) {
+        let rr = new RootReactive_1.RootReactive(this, ws);
         return rr;
     }
 }

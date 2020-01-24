@@ -3,9 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const BaseReactive_1 = require("./BaseReactive");
 const RState_1 = require("./RState");
 class RootReactive extends BaseReactive_1.BaseReactive {
-    constructor(warders) {
+    constructor(d, warders) {
         super(null, null);
         this.state = RState_1.RState.Idle;
+        this._data = d;
         this.setRoot(this);
         this.wardersMap = this.genWarderMap(warders);
     }
@@ -31,6 +32,7 @@ class RootReactive extends BaseReactive_1.BaseReactive {
     setState(st) {
         this.state = st;
     }
+    get data() { return this._data; }
 }
 exports.RootReactive = RootReactive;
 //# sourceMappingURL=RootReactive.js.map

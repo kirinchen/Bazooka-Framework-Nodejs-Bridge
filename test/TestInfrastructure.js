@@ -14,6 +14,9 @@ const Config_1 = require("../Config");
 const Warder_1 = require("../warder/Warder");
 const Reactiver_1 = require("../run/Reactiver");
 const UntilsUtils_1 = require("../UntilsUtils");
+let c = new Config_1.Config({
+    a: "123"
+});
 describe(" test app", function () {
     it("check Config", function () {
         var config = new Config_1.Config({
@@ -34,14 +37,15 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        Reactiver_1.Reactiver.observe([warder])
+        let r = new Reactiver_1.Reactiver(c);
+        r.observe([warder])
             .where(_d => {
             return true;
         })
             .subscribe(_d => {
             console.log("d:" + JSON.stringify(_d));
             assert.equal(_d.Test.value(), 33);
-        });
+        }).observe();
     });
     it("run Async Do", function () {
         return __awaiter(this, void 0, void 0, function* () {
@@ -50,7 +54,8 @@ describe(" test app", function () {
                 console.log("d:" + d);
             });
             warder.setValue(33);
-            Reactiver_1.Reactiver.observe([warder])
+            let r = new Reactiver_1.Reactiver(c);
+            r.observe([warder])
                 .where(_d => {
                 return true;
             })
@@ -62,7 +67,7 @@ describe(" test app", function () {
                 .subscribe(_d => {
                 console.log("d:" + JSON.stringify(_d));
                 assert.equal(_d.Test.value(), 33);
-            });
+            }).observe();
             let a = yield UntilsUtils_1.UntilsUtils.waitSeconds(1000, "QQ");
         });
     });

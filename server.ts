@@ -2,7 +2,6 @@ import { Warder } from "./warder/Warder";
 import { Reactiver } from "./run/Reactiver";
 import { BZKLauncher } from "./run/BZKLauncher";
 import { Config } from "./Config";
-import { UntilsUtils } from "./UntilsUtils";
 import { Runer } from "./run/Runer";
 /*import http = require('http');
 var port = process.env.port || 1337
@@ -29,13 +28,15 @@ let c = new Config({
 BZKLauncher.getInstance(c)
     .add(new Runer("test", rt => {
 
-        Reactiver.observe([warder])
+        let r = new Reactiver(c);
+
+        r.observe([warder])
             .where(_d => {
                 return true;
             })
             .subscribe(_d => {
                 console.log("dobserve:" + _d);
-            });
+            }).observe();
 
         warder.setValue(99);
 

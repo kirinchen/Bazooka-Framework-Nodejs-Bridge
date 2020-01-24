@@ -5,6 +5,10 @@ import { Reactiver } from "../run/Reactiver";
 import { UntilsUtils } from "../UntilsUtils";
 
 
+let c = new Config({
+    a: "123"
+});
+
 describe(" test app", function () {
 
     it("check Config", function () {
@@ -29,14 +33,15 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        Reactiver.observe([warder])
+        let r = new Reactiver(c);
+        r.observe([warder])
             .where(_d => {
                 return true;
             })
             .subscribe(_d => {
                 console.log("d:" + JSON.stringify(_d));
                 assert.equal(_d.Test.value(), 33);
-            });
+            }).observe();
     });
 
     it("run Async Do", async function () {
@@ -45,7 +50,8 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        Reactiver.observe([warder])
+        let r = new Reactiver(c);
+        r.observe([warder])
             .where(_d => {
                 return true;
             })
@@ -57,7 +63,7 @@ describe(" test app", function () {
             .subscribe(_d => {
                 console.log("d:" + JSON.stringify(_d));
                 assert.equal(_d.Test.value(), 33);
-            });
+            }).observe();
         let a = await UntilsUtils.waitSeconds(1000, "QQ");
     });
 
