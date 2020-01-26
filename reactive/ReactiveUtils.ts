@@ -9,7 +9,6 @@ export class ReactiveUtils {
         }
         console.log("re.action" + re.action);
         var ans = re as RootReactive;
-        ans.onUpdate("11")
         return ans;
     }
 

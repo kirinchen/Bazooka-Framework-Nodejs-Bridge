@@ -108,6 +108,8 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="test\testInfrastructure.ts">
       <SubType>Code</SubType>
+      <Publish>True</Publish>
+      <TestFramework>mocha</TestFramework>
     </TypeScriptCompile>
     <TypeScriptCompile Include="UntilsUtils.ts">
       <SubType>Code</SubType>

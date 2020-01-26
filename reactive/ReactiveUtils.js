@@ -9,7 +9,6 @@ class ReactiveUtils {
         }
         console.log("re.action" + re.action);
         var ans = re;
-        ans.onUpdate("11");
         return ans;
     }
     static next(_re) {

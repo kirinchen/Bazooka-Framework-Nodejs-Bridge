@@ -3,6 +3,7 @@ import { ReactiveGener } from "./run/ReactiveGener";
 import { BZKLauncher } from "./run/BZKLauncher";
 import { Config } from "./Config";
 import { Runer } from "./run/Runer";
+import { UntilsUtils } from "./UntilsUtils";
 /*import http = require('http');
 var port = process.env.port || 1337
 http.createServer(function (req, res) {
@@ -35,6 +36,12 @@ BZKLauncher.getInstance(c)
         })
     )
     .start();
+
+UntilsUtils.openThread(async () => {
+    await UntilsUtils.waitSeconds(300, "99");
+    warder.setValue(99);
+});
+
 
 /*rg.observe([warder])
     .where(_d => {

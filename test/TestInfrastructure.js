@@ -34,50 +34,51 @@ describe(" test app", function () {
         assert.equal(config.get('x', 123), 123);
     });
     it("base run", function () {
-        var warder = new Warder_1.Warder("Test");
-        warder.subscribeAction(d => {
-            console.log("d:" + d);
-        });
-        warder.setValue(33);
-        let r = new ReactiveGener_1.ReactiveGener(bd);
-        r.observe([warder])
-            .where(_d => {
-            return true;
-        })
-            .subscribe(_d => {
-            console.log("d:" + JSON.stringify(_d));
-            assert.equal(_d.Test.value(), 33);
-        }).observe();
-    });
-    it("run Async Do", function () {
         return __awaiter(this, void 0, void 0, function* () {
             var warder = new Warder_1.Warder("Test");
-            warder.subscribeAction(d => {
-                console.log("d:" + d);
-            });
-            warder.setValue(33);
             let r = new ReactiveGener_1.ReactiveGener(bd);
             r.observe([warder])
                 .where(_d => {
                 return true;
             })
-                .do((_d) => __awaiter(this, void 0, void 0, function* () {
-                console.log("Do d:" + JSON.stringify(_d));
-                yield UntilsUtils_1.UntilsUtils.waitSeconds(500, "QQ");
-                console.log("End Do d:" + JSON.stringify(_d));
-            }))
-                .subscribe(_d => {
-                console.log("d:" + JSON.stringify(_d));
-                assert.equal(_d.Test.value(), 33);
+                .subscribe((_d) => {
+                console.log("ddddd:" + JSON.stringify(_d));
+                let o = _d.getWarder("Test");
+                let v = o.value();
+                console.log("v:" + v);
+                assert.equal(o.value(), 33);
             }).observe();
-            let a = yield UntilsUtils_1.UntilsUtils.waitSeconds(1000, "QQ");
+            yield UntilsUtils_1.UntilsUtils.waitSeconds(100, "");
+            warder.setValue(33);
         });
     });
+    /*it("run Async Do", async function () {
+         var warder = new Warder("Test");
+         warder.subscribeAction(d => {
+             console.log("d:" + d);
+         });
+         warder.setValue(33);
+         let r = new ReactiveGener(bd);
+         r.observe([warder])
+             .where(_d => {
+                 return true;
+             })
+             .do(async _d => {
+                 console.log("Do d:" + JSON.stringify(_d));
+                 await UntilsUtils.waitSeconds(500, "QQ");
+                 console.log("End Do d:" + JSON.stringify(_d));
+             })
+             .subscribe(_d => {
+                 console.log("d:" + JSON.stringify(_d));
+                 assert.equal(_d.Test.value(), 33);
+             }).observe();
+         let a = await UntilsUtils.waitSeconds(1000, "QQ");
+     });*/
     it("run Async ", function () {
         return __awaiter(this, void 0, void 0, function* () {
             let a = yield UntilsUtils_1.UntilsUtils.waitSeconds(1000, "QQ");
             console.log("a:" + a);
         });
-    }); /**/
+    });
 });
 //# sourceMappingURL=testInfrastructure.js.map

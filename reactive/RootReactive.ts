@@ -40,7 +40,7 @@ export class RootReactive extends BaseReactive implements WarderAction {
         this.state = st;
     }
 
-    get data(): DataProvider { return this._data; }
+    get data(): ReactiveDataProvider { return this._data; }
 
 
 }

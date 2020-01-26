@@ -3,7 +3,10 @@ import { Config } from "../Config";
 import { Warder } from '../warder/Warder'
 import { ReactiveGener } from "../run/ReactiveGener";
 import { UntilsUtils } from "../UntilsUtils";
-import { BaseDataProvider } from "../run/DataProvider";
+import { BaseDataProvider, DataProvider } from "../run/DataProvider";
+import { FuncT1 } from "../comm/delegate/FuncT1";
+import { ActionT1 } from "../comm/delegate/ActionT1";
+import { Src, ReactiveDataProvider } from "../run/ReactiveDataProvider";
 
 
 let c = new Config({
@@ -29,24 +32,26 @@ describe(" test app", function () {
 
     });
 
-    it("base run", function () {
+    it("base run", async function () {
         var warder = new Warder("Test");
-        warder.subscribeAction(d => {
-            console.log("d:" + d);
-        });
-        warder.setValue(33);
         let r = new ReactiveGener(bd);
         r.observe([warder])
             .where(_d => {
                 return true;
             })
-            .subscribe(_d => {
-                console.log("d:" + JSON.stringify(_d));
-                assert.equal(_d.Test.value(), 33);
+            .subscribe((_d: ReactiveDataProvider ) => {
+                console.log("ddddd:" + JSON.stringify(_d));
+                let o = _d.getWarder("Test");
+                let v = o.value();
+                console.log("v:" + v);
+                assert.equal(o.value(), 33);
             }).observe();
+
+        await UntilsUtils.waitSeconds(100, "");
+        warder.setValue(33);
     });
 
-    it("run Async Do", async function () {
+   /*it("run Async Do", async function () {
         var warder = new Warder("Test");
         warder.subscribeAction(d => {
             console.log("d:" + d);
@@ -67,14 +72,14 @@ describe(" test app", function () {
                 assert.equal(_d.Test.value(), 33);
             }).observe();
         let a = await UntilsUtils.waitSeconds(1000, "QQ");
-    });
+    });*/
 
    it("run Async ", async function () {
 
        let a = await UntilsUtils.waitSeconds(1000, "QQ");
         console.log("a:" + a);
 
-   }); /**/
+   }); 
 
 
 
