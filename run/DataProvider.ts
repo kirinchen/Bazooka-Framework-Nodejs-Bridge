@@ -2,7 +2,7 @@ import { Config } from "../Config";
 
 export interface DataProvider {
 
-    get(src: string, path: string): object;
+    get(src: string, path: string, _default: any  ): object;
 
 }
 
@@ -20,7 +20,7 @@ export class BaseDataProvider implements DataProvider {
         this._config = c;
     }
 
-    get(src: string, path: string, _default: any = null): object {
+    get(src: string, path: string, _default: any ): object {
         if (BaseSrc.config.toString() == src) return this._config.get(path, _default);
         return null;
     }

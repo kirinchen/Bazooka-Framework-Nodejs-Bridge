@@ -20,26 +20,26 @@ var warder = new Warder("Test");
 warder.setValue(33);*/
 
 let c = new Config({
-    a:"123"
+    a: "123"
 });
 
 
 
 BZKLauncher.getInstance(c)
-    .add(new Runer("test", rt => {
-
-        let r = new ReactiveGener(c);
-
-        r.observe([warder])
-            .where(_d => {
-                return true;
-            })
-            .subscribe(_d => {
-                console.log("dobserve:" + _d);
-            }).observe();
-
-        warder.setValue(99);
-
-    }))
+    .add((rg: ReactiveGener) => rg.observe([warder])
+        .where(_d => {
+            return true;
+        })
+        .subscribe(_d => {
+            console.log("dobserve:" + _d);
+        })
+    )
     .start();
 
+/*rg.observe([warder])
+    .where(_d => {
+        return true;
+    })
+    .subscribe(_d => {
+        console.log("dobserve:" + _d);
+    })*/

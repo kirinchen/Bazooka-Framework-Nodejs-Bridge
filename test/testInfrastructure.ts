@@ -3,11 +3,13 @@ import { Config } from "../Config";
 import { Warder } from '../warder/Warder'
 import { ReactiveGener } from "../run/ReactiveGener";
 import { UntilsUtils } from "../UntilsUtils";
+import { BaseDataProvider } from "../run/DataProvider";
 
 
 let c = new Config({
     a: "123"
 });
+let bd = new BaseDataProvider(c);
 
 describe(" test app", function () {
 
@@ -33,7 +35,7 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        let r = new ReactiveGener(c);
+        let r = new ReactiveGener(bd);
         r.observe([warder])
             .where(_d => {
                 return true;
@@ -50,7 +52,7 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        let r = new ReactiveGener(c);
+        let r = new ReactiveGener(bd);
         r.observe([warder])
             .where(_d => {
                 return true;

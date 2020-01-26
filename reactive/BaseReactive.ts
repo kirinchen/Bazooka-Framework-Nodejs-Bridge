@@ -2,12 +2,13 @@ import { Reactive } from "./Reactive";
 import { Where } from "./Where";
 import { Do } from "./Do";
 import { ReactiveUtils } from "./ReactiveUtils";
+import { RootReactive } from "./RootReactive";
 
 export class BaseReactive extends Reactive {
 
     ended: boolean = false;
 
-    constructor(_b: Reactive, _r: Reactive) {
+    constructor(_b: Reactive, _r: RootReactive) {
         super(_b,_r);
     }
 
@@ -36,10 +37,5 @@ export class BaseReactive extends Reactive {
     }
 
     
-
-    map(): Map<string, any> {
-        return this.getRoot().map();
-    }
-
 
 }

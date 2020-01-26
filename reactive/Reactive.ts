@@ -1,13 +1,14 @@
 import { Warder } from "../warder/Warder";
 import { Lambda } from "../reactive/Lambda";
+import { RootReactive } from "./RootReactive";
 
-export abstract  class Reactive {
-    public root: Reactive;
+export abstract class Reactive {
+    public root: RootReactive;
     public next: Reactive;
     public before: Reactive;
     public action: Lambda = null;
 
-    constructor(_b: Reactive, _r: Reactive) {
+    constructor(_b: Reactive, _r: RootReactive) {
         this.root = _r;
         this.before = _b;
 
@@ -16,8 +17,6 @@ export abstract  class Reactive {
         }
 
     }
-
-    public abstract map(): Map<string, Warder>;
 
     public getNext() {
         return this.next;
@@ -35,7 +34,7 @@ export abstract  class Reactive {
         this.root = _r;
     }
 
-    public getRoot() {
+    public getRoot(): RootReactive {
         return this.root;
     }
 

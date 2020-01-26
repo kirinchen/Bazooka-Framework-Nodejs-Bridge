@@ -1,10 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Warder_1 = require("./warder/Warder");
-const Reactiver_1 = require("./run/Reactiver");
 const BZKLauncher_1 = require("./run/BZKLauncher");
 const Config_1 = require("./Config");
-const Runer_1 = require("./run/Runer");
 /*import http = require('http');
 var port = process.env.port || 1337
 http.createServer(function (req, res) {
@@ -21,16 +19,19 @@ let c = new Config_1.Config({
     a: "123"
 });
 BZKLauncher_1.BZKLauncher.getInstance(c)
-    .add(new Runer_1.Runer("test", rt => {
-    let r = new Reactiver_1.Reactiver(c);
-    r.observe([warder])
-        .where(_d => {
-        return true;
-    })
-        .subscribe(_d => {
-        console.log("dobserve:" + _d);
-    }).observe();
-    warder.setValue(99);
+    .add((rg) => rg.observe([warder])
+    .where(_d => {
+    return true;
+})
+    .subscribe(_d => {
+    console.log("dobserve:" + _d);
 }))
     .start();
+/*rg.observe([warder])
+    .where(_d => {
+        return true;
+    })
+    .subscribe(_d => {
+        console.log("dobserve:" + _d);
+    })*/ 
 //# sourceMappingURL=server.js.map

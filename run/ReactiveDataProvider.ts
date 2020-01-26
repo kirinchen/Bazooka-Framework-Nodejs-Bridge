@@ -1,6 +1,10 @@
 import { DataProvider } from "./DataProvider";
 import { Warder } from "../warder/Warder";
 
+export enum Src {
+    warder
+}
+
 export class ReactiveDataProvider implements DataProvider {
 
     baseData: DataProvider;
@@ -21,8 +25,12 @@ export class ReactiveDataProvider implements DataProvider {
         return wdb;
     }
 
-    get(src: string, path: string): object {
-        throw new Error("Method not implemented.");
+    get(src: string, path: string, _default: any): object {
+        let ans = this.baseData.get(src, path, _default);
+        if (ans) return ans;
+        if (Src.warder.toString() == src) return this.wardersMap.get(path);
+        return null;
+
     }
 
     public map(): Map<string, Warder> {

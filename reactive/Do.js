@@ -5,7 +5,7 @@ const ReactiveUtils_1 = require("./ReactiveUtils");
 class Do extends Lambda_1.Lambda {
     run() {
         if (this.action())
-            this.action().call(null, this.reactive().map());
+            this.action().call(null, this.reactive().getRoot().data);
         ReactiveUtils_1.ReactiveUtils.next(this.reactive());
     }
 }

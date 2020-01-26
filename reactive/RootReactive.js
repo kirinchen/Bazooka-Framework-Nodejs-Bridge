@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const BaseReactive_1 = require("./BaseReactive");
 const RState_1 = require("./RState");
+const ReactiveDataProvider_1 = require("../run/ReactiveDataProvider");
 class RootReactive extends BaseReactive_1.BaseReactive {
     constructor(d, warders) {
         super(null, null);
         this.state = RState_1.RState.Idle;
-        this._data = d;
+        this._data = new ReactiveDataProvider_1.ReactiveDataProvider(d, warders);
         this.setRoot(this);
-        this.wardersMap = this.genWarderMap(warders);
     }
     genWarderMap(warders) {
         var wdb = new Map();
@@ -17,11 +17,8 @@ class RootReactive extends BaseReactive_1.BaseReactive {
         });
         return wdb;
     }
-    map() {
-        return this.wardersMap;
-    }
     observe() {
-        for (let value of this.wardersMap.values()) {
+        for (let value of this._data.map().values()) {
             value.subscribe(this);
         }
     }

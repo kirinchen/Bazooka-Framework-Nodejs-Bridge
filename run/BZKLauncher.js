@@ -1,14 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const Runer_1 = require("./Runer");
+const ReactiveGener_1 = require("./ReactiveGener");
+const DataProvider_1 = require("./DataProvider");
 class BZKLauncher {
     constructor(_c) {
         this.console = null;
         this.runners = new Array();
-        this.config = _c;
+        let bdp = new DataProvider_1.BaseDataProvider(_c);
+        this.reactiveGener = new ReactiveGener_1.ReactiveGener(bdp);
     }
-    add(t) {
-        t.init(this);
-        this.runners.push(t);
+    add(f) {
+        let br = f(this.reactiveGener);
+        let rr = new Runer_1.Runer(br);
+        this.runners.push(rr);
         return this;
     }
     start() {

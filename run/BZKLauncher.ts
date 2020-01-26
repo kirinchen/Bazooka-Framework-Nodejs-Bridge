@@ -1,5 +1,10 @@
 import { Config } from "../Config";
 import { Runer } from "./Runer";
+import { FuncT1 } from "../comm/delegate/FuncT1";
+import { ReactiveGener } from "./ReactiveGener";
+import { RootReactive } from "../reactive/RootReactive";
+import { BaseDataProvider } from "./DataProvider";
+import { BaseReactive } from "../reactive/BaseReactive";
 
 
 
@@ -8,15 +13,17 @@ export class BZKLauncher {
     private static instance: BZKLauncher = null;
     console = null;
     runners: Array<Runer> = new Array<Runer>();
-    config: Config;
+    reactiveGener: ReactiveGener;
 
     constructor(_c: Config) {
-        this.config = _c;
+        let bdp: BaseDataProvider = new BaseDataProvider(_c);
+        this.reactiveGener = new ReactiveGener(bdp);
     }
 
-    public add(t: Runer): BZKLauncher {
-        t.init(this);
-        this.runners.push(t);
+    public add(f: FuncT1<ReactiveGener, BaseReactive>): BZKLauncher {
+        let br = f(this.reactiveGener);
+        let rr: Runer = new Runer(br);
+        this.runners.push(rr);
         return this;
     }
 

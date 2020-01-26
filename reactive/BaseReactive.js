@@ -30,9 +30,6 @@ class BaseReactive extends Reactive_1.Reactive {
             throw new Error("Not subscribe!!");
         ReactiveUtils_1.ReactiveUtils.shiftRoot(this).observe();
     }
-    map() {
-        return this.getRoot().map();
-    }
 }
 exports.BaseReactive = BaseReactive;
 //# sourceMappingURL=BaseReactive.js.map

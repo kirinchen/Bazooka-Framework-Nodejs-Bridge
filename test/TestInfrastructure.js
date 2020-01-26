@@ -12,11 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require('chai').assert;
 const Config_1 = require("../Config");
 const Warder_1 = require("../warder/Warder");
-const Reactiver_1 = require("../run/Reactiver");
+const ReactiveGener_1 = require("../run/ReactiveGener");
 const UntilsUtils_1 = require("../UntilsUtils");
+const DataProvider_1 = require("../run/DataProvider");
 let c = new Config_1.Config({
     a: "123"
 });
+let bd = new DataProvider_1.BaseDataProvider(c);
 describe(" test app", function () {
     it("check Config", function () {
         var config = new Config_1.Config({
@@ -37,7 +39,7 @@ describe(" test app", function () {
             console.log("d:" + d);
         });
         warder.setValue(33);
-        let r = new Reactiver_1.Reactiver(c);
+        let r = new ReactiveGener_1.ReactiveGener(bd);
         r.observe([warder])
             .where(_d => {
             return true;
@@ -54,7 +56,7 @@ describe(" test app", function () {
                 console.log("d:" + d);
             });
             warder.setValue(33);
-            let r = new Reactiver_1.Reactiver(c);
+            let r = new ReactiveGener_1.ReactiveGener(bd);
             r.observe([warder])
                 .where(_d => {
                 return true;
