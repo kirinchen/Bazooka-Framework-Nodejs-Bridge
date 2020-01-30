@@ -34,6 +34,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".prettierrc" />
+    <Content Include="jestconfig.json" />
+    <Content Include="tslint.json" />
     <None Include="server.ts" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
@@ -109,11 +112,7 @@
     <TypeScriptCompile Include="run\Runer.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="test\testInfrastructure.ts">
-      <SubType>Code</SubType>
-      <Publish>True</Publish>
-      <TestFramework>mocha</TestFramework>
-    </TypeScriptCompile>
+    <TypeScriptCompile Include="test\Infrastructure.test.ts" />
     <TypeScriptCompile Include="UntilsUtils.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

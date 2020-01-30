@@ -1,5 +1,5 @@
 export class Config {
-    public data: Object = {};
+    public data: object = {};
 
     constructor(cfg) {
         for (const [key, value] of Object.entries(cfg)) {
@@ -8,10 +8,10 @@ export class Config {
     }
 
     public get(path: string, _default: any = null): any {
-        var ps = path.split('.');
-        var cd = this.data;
+        let ps = path.split('.');
+        let cd = this.data;
         for (var i = 0; i < ps.length; i++) {
-            var p = ps[i];
+            let p = ps[i];
             if (cd.hasOwnProperty(p)) {
                 cd = cd[p];
             } else {

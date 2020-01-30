@@ -11,7 +11,7 @@ export class UntilsUtils {
     }
 
     public static openThread(t: Action): void {
-        setTimeout(function () {
+        setTimeout( ()=> {
             t();
         }, 0);
     }
