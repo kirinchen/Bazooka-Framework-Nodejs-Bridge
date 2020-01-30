@@ -1,8 +1,9 @@
 {
-  "name": "auto-trade-bazooka-framework",
-  "version": "0.0.5",
+  "name": "bzk",
+  "version": "0.0.6",
   "description": "AutoTradeBazookaFramework",
-  "main": "server.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "Kirin",
   "contributors": [
     {

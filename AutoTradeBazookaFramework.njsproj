@@ -15,7 +15,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ce76880d-e84b-4185-b6c9-5fd03f38005f</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.ts</StartupFile>
+    <StartupFile>./lib/server.ts</StartupFile>
     <StartWebBrowser>True</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -56,6 +56,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="comm\delegate\OOActionT1.ts" />
     <TypeScriptCompile Include="comm\delegate\OOAction.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="run\BZKLauncher.ts">
