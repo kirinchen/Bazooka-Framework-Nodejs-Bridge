@@ -1,4 +1,5 @@
-import { Config } from "./Config"
+import { Config } from "./comm/config/Config"
+import { CofGet } from "./comm/config/Config"
 import { Warder } from "./warder/Warder";
 import { ReactiveGener } from "./run/ReactiveGener";
 import { BZKLauncher } from "./run/BZKLauncher";
@@ -12,6 +13,6 @@ import { OOActionT1 } from "./comm/delegate/OOActionT1";
 
 
 export {
-    Config, Warder, ReactiveGener, BZKLauncher, Runer, UntilsUtils,
+    Config, CofGet, Warder, ReactiveGener, BZKLauncher, Runer, UntilsUtils,
     Action, ActionT1, FuncT1, OOAction, OOActionT1
 }

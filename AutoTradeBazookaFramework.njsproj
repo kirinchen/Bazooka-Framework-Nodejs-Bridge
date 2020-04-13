@@ -45,6 +45,7 @@
   <ItemGroup>
     <Folder Include="comm\" />
     <Folder Include="comm\delegate\" />
+    <Folder Include="comm\config\" />
     <Folder Include="run\" />
     <Folder Include="test\" />
     <Folder Include="warder\" />
@@ -73,7 +74,7 @@
     <TypeScriptCompile Include="comm\Value.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Config.ts">
+    <TypeScriptCompile Include="comm\config\Config.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="run\DataProvider.ts">

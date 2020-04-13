@@ -1,5 +1,6 @@
-import { Config } from "..";
+
 import { BaseDataProvider } from "../run/DataProvider";
+import { Config, CofGet } from "../comm/config/Config";
 
 let c = new Config({
     a: "123"
@@ -22,5 +23,14 @@ test('Config Get', () => {
     expect(config.get('x', 123)).toBe(123);
     expect(config.get('xx1', 'xxxx')).toBe('xxxx');
 
+
+});
+
+let conGet: CofGet = new CofGet("test.test","vvvv");
+
+test('Config conGet', () => {
+
+    let v= c.get(conGet);
+    expect(v).toBe("vvvv");
 
 });

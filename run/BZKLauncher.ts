@@ -1,4 +1,4 @@
-import { Config } from "../Config";
+import { Config } from "../comm/config/Config";
 import { Runer } from "./Runer";
 import { FuncT1 } from "../comm/delegate/FuncT1";
 import { ReactiveGener } from "./ReactiveGener";

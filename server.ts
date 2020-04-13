@@ -1,7 +1,7 @@
 import { Warder } from "./warder/Warder";
 import { ReactiveGener } from "./run/ReactiveGener";
 import { BZKLauncher } from "./run/BZKLauncher";
-import { Config } from "./Config";
+import { Config, CofGet } from "./comm/config/Config";
 import { Runer } from "./run/Runer";
 import { UntilsUtils } from "./UntilsUtils";
 
@@ -45,10 +45,6 @@ UntilsUtils.openThread(async () => {
 });
 
 
-/*rg.observe([warder])
-    .where(_d => {
-        return true;
-    })
-    .subscribe(_d => {
-        console.log("dobserve:" + _d);
-    })*/
+let conGet: CofGet = new CofGet("test.test","vvvv");
+
+let v = c.get(conGet);
