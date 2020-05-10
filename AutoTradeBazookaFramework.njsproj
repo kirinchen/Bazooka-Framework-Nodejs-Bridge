@@ -36,6 +36,8 @@
   <ItemGroup>
     <Content Include=".prettierrc" />
     <Content Include="jestconfig.json" />
+    <Content Include="myconfig\bzk.properties" />
+    <Content Include="myconfig\typescript-influxdb-example.env" />
     <Content Include="tslint.json" />
     <None Include="server.ts" />
     <Content Include="tsconfig.json" />
@@ -46,6 +48,8 @@
     <Folder Include="comm\" />
     <Folder Include="comm\delegate\" />
     <Folder Include="comm\config\" />
+    <Folder Include="myconfig\" />
+    <Folder Include="record\" />
     <Folder Include="run\" />
     <Folder Include="test\" />
     <Folder Include="warder\" />
@@ -63,6 +67,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="record\BaseDao.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="run\BZKLauncher.ts">

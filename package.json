@@ -18,17 +18,19 @@
     "test": "jest --config jestconfig.json"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.1",
-    "@types/node": "^8.0.14",
-    "jest": "^25.1.0",
-    "prettier": "^1.19.1",
-    "ts-jest": "^25.1.0",
-    "tslint": "^6.0.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.4",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.4.0",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.2.2"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
-    "daemon": "^1.1.0"
+    "@influxdata/influxdb-client": "^1.2.0",
+    "daemon": "^1.1.0",
+    "properties": "^1.2.1"
   },
   "repository": {
     "type": "git",

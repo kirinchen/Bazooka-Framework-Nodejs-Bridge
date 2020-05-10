@@ -1,17 +1,11 @@
 import { Warder } from "./warder/Warder";
 import { ReactiveGener } from "./run/ReactiveGener";
 import { BZKLauncher } from "./run/BZKLauncher";
-import { Config, CofGet } from "./comm/config/Config";
+import { Config, CofGet, PropertiesCofigLoad } from "./comm/config/Config";
 import { Runer } from "./run/Runer";
 import { UntilsUtils } from "./UntilsUtils";
 
 
-/*import http = require('http');
-var port = process.env.port || 1337
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(port);*/
 
 
 var warder = new Warder("Test");
@@ -22,13 +16,16 @@ var warder = new Warder("Test");
 
 warder.setValue(33);*/
 
-let c = new Config({
-    a: "123"
-});
 
 
 
-BZKLauncher.getInstance(c)
+BZKLauncher.getInstance()
+    .beforeInit(async () => {
+        await PropertiesCofigLoad.load("./myconfig/bzk.properties");
+        Config.appendEx({
+            a: "123"
+        });
+    })
     .add((rg: ReactiveGener) => rg.observe([warder])
         .where(_d => {
             return true;
@@ -45,6 +42,3 @@ UntilsUtils.openThread(async () => {
 });
 
 
-let conGet: CofGet = new CofGet("test.test","vvvv");
-
-let v = c.get(conGet);

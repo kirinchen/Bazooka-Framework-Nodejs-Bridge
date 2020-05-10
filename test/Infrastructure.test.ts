@@ -2,18 +2,19 @@
 import { BaseDataProvider } from "../run/DataProvider";
 import { Config, CofGet } from "../comm/config/Config";
 
-let c = new Config({
+Config.init({
     a: "123"
 });
-let bd = new BaseDataProvider(c);
+let bd = new BaseDataProvider();
 
 test('Config Get', () => {
 
-    var config = new Config({
+    Config.appendEx({
         a: "af",
         b: "bf",
         c: "cn"
     });
+    let config = Config.provide();
 
     console.log(config.size() + ":" + config.get('a')+"!!!!");
     expect(config.size() ).toBe(3);
@@ -29,8 +30,8 @@ test('Config Get', () => {
 let conGet: CofGet = new CofGet("test.test","vvvv");
 
 test('Config conGet', () => {
-
-    let v= c.get(conGet);
+    let config = Config.provide();
+    let v = config.get(conGet);
     expect(v).toBe("vvvv");
 
 });

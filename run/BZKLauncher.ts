@@ -14,10 +14,20 @@ export class BZKLauncher {
     console = null;
     runners: Array<Runer> = new Array<Runer>();
     reactiveGener: ReactiveGener;
+    _beforeInit: {
+        (): Promise<any>;
+    };
 
-    constructor(_c: Config) {
-        let bdp: BaseDataProvider = new BaseDataProvider(_c);
+    constructor() {
+        let bdp: BaseDataProvider = new BaseDataProvider();
         this.reactiveGener = new ReactiveGener(bdp);
+    }
+
+    public beforeInit(a: {
+        (): Promise<any>;
+    }) {
+        this._beforeInit = a;
+        return this;
     }
 
     public add(f: FuncT1<ReactiveGener, BaseReactive>): BZKLauncher {
@@ -27,7 +37,7 @@ export class BZKLauncher {
         return this;
     }
 
-    public  start(): void {
+    public async  start() {
         var readline = require('readline');
         this.console = readline.createInterface(process.stdin, process.stdout);
         this.console.setPrompt('guess> ');
@@ -38,7 +48,7 @@ export class BZKLauncher {
         }).on('close', function () {
             process.exit(0);
         });
-
+        if (this._beforeInit) await this._beforeInit();
         this.startRunners();
     }
 
@@ -46,16 +56,16 @@ export class BZKLauncher {
         this.runners.forEach(r => r.start());
     }
 
-    public static getInstance(_c: Config) {
+    public static getInstance() {
         if (!this.instance) {
-            this.instance = new BZKLauncher(_c);
+            this.instance = new BZKLauncher();
         }
         return this.instance;
     }
-    
 
 
-    
+
+
 
 
 }

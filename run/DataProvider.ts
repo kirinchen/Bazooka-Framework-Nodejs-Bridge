@@ -19,12 +19,13 @@ enum BaseSrc {
 
 export class BaseDataProvider extends DataProvider {
 
-    _config: Config;
 
-    constructor(c: Config) {
+    constructor() {
         super();
-        this._config = c;
+       
     }
+
+    get _config(): Config { return Config.provide(); }
 
     opt(src: string, path: string, _default: any ): object {
         if (BaseSrc.config.toString() == src) return this._config.get(path, _default);
