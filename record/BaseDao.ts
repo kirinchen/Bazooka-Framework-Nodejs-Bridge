@@ -1,13 +1,21 @@
-import { InfluxDB, FluxTableMetaData, Point, HttpError } from '@influxdata/influxdb-client'
+import { InfluxDB, FluxTableMetaData, Point, HttpError, WriteApi } from '@influxdata/influxdb-client'
 import { Config } from '../comm/config/Config';
 
 export class BaseDao {
 
-    client = new InfluxDB({ url: Config.provide().get("influxdata.url"), token: Config.provide().get("influxdata.token") });
-    writeApi = this.client.getWriteApi(Config.provide().get("influxdata.org"), Config.provide().get("influxdata.bucket"));
+    client: InfluxDB;
+    writeApi: WriteApi;
+
+    public constructor() {
+        this.client = new InfluxDB({ url: Config.provide().get("influxdata.url"), token: Config.provide().get("influxdata.token") });
+        this.writeApi = this.client.getWriteApi(Config.provide().get("influxdata.org"), Config.provide().get("influxdata.bucket"));
+
+        console.log("init BaseDao");
+    }
 
 
     public insert(e: Entity) {
+        console.log(`insert ${e}`);
         let dateTime = e.time.getTime();
         let timestamp = dateTime * 1000000; //Math.floor(dateTime / 1000);
         let point1 = new Point(e.measurement)
@@ -58,4 +66,16 @@ export class ValueMap extends Map<string, number>{
         this.set(k, v);
         return this;
     }
+
+    public putAll(obj: object): ValueMap {
+        Object.entries(obj).forEach(
+            ([key, value]) => {
+                if (typeof value === 'number') {
+                    this.set(key, value);
+                }
+            } 
+        );
+        return this;
+    }
+
 }
