@@ -4,7 +4,7 @@ import { BZKLauncher } from "./run/BZKLauncher";
 import { Config, CofGet, PropertiesCofigLoad } from "./comm/config/Config";
 import { Runer } from "./run/Runer";
 import { UntilsUtils } from "./UntilsUtils";
-import { BaseDao, Entity, ValueMap } from "./record/BaseDao";
+import { BaseDao, Entity, ValueMap, TagMap } from "./record/BaseDao";
 
 
 
@@ -34,7 +34,9 @@ BZKLauncher.getInstance()
                 measurement: 'test',
                 source: 'testS',
                 time: new Date(),
-                valueMap: new ValueMap().put("va", i).put("kv",i*2)
+                valueMap: new ValueMap().put("va", i).put("kv", i * 2),
+                tagMap: new TagMap().put("qq","xx")
+                
             };
             bd.insert(et);
             await UntilsUtils.waitSeconds(100,"");

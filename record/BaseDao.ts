@@ -24,6 +24,10 @@ export class BaseDao {
         e.valueMap.forEach((v, k) => {
             point1.floatField(k, v);
         });
+        e.tagMap.forEach((v, k) => {
+            point1.tag(k, v);
+        });
+        
         this.writeApi.writePoint(point1);
         console.log(` ${point1}`);
     }
@@ -51,7 +55,7 @@ export class Entity extends Object {
     time: Date;
     source: string;
     valueMap: ValueMap;
-
+    tagMap: TagMap;
 
 
 
@@ -70,10 +74,29 @@ export class ValueMap extends Map<string, number>{
     public putAll(obj: object): ValueMap {
         Object.entries(obj).forEach(
             ([key, value]) => {
-                if (typeof value === 'number') {
+                if (typeof value === 'number' && !isNaN(value) ) {
                     this.set(key, value);
                 }
             } 
+        );
+        return this;
+    }
+
+}
+
+export class TagMap extends Map<string, string>{
+    public put(k: string, v: string): TagMap {
+        this.set(k, v);
+        return this;
+    }
+
+    public putAll(obj: object): TagMap {
+        Object.entries(obj).forEach(
+            ([key, value]) => {
+                if (typeof value === 'string') {
+                    this.set(key, value);
+                }
+            }
         );
         return this;
     }
