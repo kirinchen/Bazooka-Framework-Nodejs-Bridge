@@ -56,6 +56,9 @@
     <Folder Include="reactive\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Bridge.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="comm\delegate\ActionT1.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
