@@ -4,10 +4,10 @@ export enum VarQueryPoint {
     flow, box
 }
 
-export interface VarQuery {
+export class VarQuery {
     runFlowUid: string;
     runBoxUid: string;
-	  point;
+    point: VarQueryPoint;
 
 }
 
@@ -24,8 +24,31 @@ export class Bridge {
         this.flowRunUid = frid;
     }
 
-    public async getVar(key: string) {
+    public async getVar(key: string): Promise<string> {
+        
+        
+        return new Promise((rev, rej) => {
+            let qd :VarQuery={
+                runFlowUid: this.flowRunUid,
+                runBoxUid: "",
+                point: VarQueryPoint.box
 
+            };
+            // set content-type header and data as json in args parameter
+            var args = {
+                data: qd,
+                headers: { "Content-Type": "application/json" }
+            };
+
+            this.client.post(this.host + "/bridge/var"
+                , args, function (data, response) {
+                // parsed response body as js object
+                console.log(data);
+                // raw response
+                console.log(response);
+            });
+      
+        });
     }
 
     public async getData(): Promise<string> {
