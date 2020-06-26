@@ -5,32 +5,42 @@ export enum VarQueryPoint {
 }
 
 export class VarQuery {
-    runFlowUid: string;
-    runBoxUid: string;
-    point: VarQueryPoint;
-    key: string;
+    public runFlowUid: string;
+    public runBoxUid: string;
+    public point: VarQueryPoint;
+    public key: string;
+}
+
+export class Uids {
+    public runFlowUid: string;
+    public runBoxUid: string;
+    public uid: string;
+}
+
+export class RpcObj {
+    public uids: Uids;
+    public host: string = "http://127.0.0.1:8080/";
 }
 
 export class Bridge {
 
     client = new Client();
-    host: string = "http://127.0.0.1:8080/";
-    flowRunUid: string;
+
+    rpcObj: RpcObj;
 
 
 
-    public init(h: string, frid: string) {
-        this.host = h;
-        this.flowRunUid = frid;
+    public init(ro: RpcObj) {
+        this.rpcObj = ro;
     }
 
     public async getVar(key: string): Promise<string> {
         
         
         return new Promise((rev, rej) => {
-            let qd :VarQuery={
-                runFlowUid: this.flowRunUid,
-                runBoxUid: "",
+            let qd: VarQuery = {
+                runFlowUid: this.rpcObj.uids.runFlowUid,
+                runBoxUid: this.rpcObj.uids.runBoxUid,
                 point: VarQueryPoint.box,
                 key: key
             };
@@ -40,7 +50,7 @@ export class Bridge {
                 headers: { "Content-Type": "application/json" }
             };
 
-            this.client.post(this.host + "/bridge/var"
+            this.client.post(this.rpcObj.host + "/bridge/var"
                 , args, function (data, response) {
                 // parsed response body as js object
                 console.log(data);
