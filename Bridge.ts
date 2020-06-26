@@ -1,14 +1,14 @@
 const Client = require('node-rest-client').Client;
 
 export enum VarQueryPoint {
-    flow, box
+    not_specify ,  flow, box
 }
 
 export class VarQuery {
     runFlowUid: string;
     runBoxUid: string;
     point: VarQueryPoint;
-
+    key: string;
 }
 
 export class Bridge {
@@ -31,8 +31,8 @@ export class Bridge {
             let qd :VarQuery={
                 runFlowUid: this.flowRunUid,
                 runBoxUid: "",
-                point: VarQueryPoint.box
-
+                point: VarQueryPoint.box,
+                key: key
             };
             // set content-type header and data as json in args parameter
             var args = {
