@@ -1,6 +1,6 @@
 {
   "name": "bzk",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "AutoTradeBazookaFramework",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
