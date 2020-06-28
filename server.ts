@@ -1,5 +1,5 @@
 import { UntilsUtils } from "./UntilsUtils";
-import { Bridge } from "./Bridge";
+import { Bridge, VarLv } from "./Bridge";
 
 
 
@@ -8,8 +8,11 @@ import { Bridge } from "./Bridge";
 
 UntilsUtils.openThread(async () => {
     let bd = new Bridge();
-    let ans = await bd.getData();
-    console.log(JSON.stringify(ans,null,4));
+    bd.markVar({
+        key: "qqq",
+        lv: VarLv.BOX,
+        val:"zzzz"
+    });
     await UntilsUtils.waitSeconds(9999, "99");
 });
 

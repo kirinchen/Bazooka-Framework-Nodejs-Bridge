@@ -1,5 +1,7 @@
 const Client = require('node-rest-client').Client;
 
+const TAG: string = "<BZK_VAR>";
+
 export enum VarQueryPoint {
     not_specify ,  flow, box
 }
@@ -22,6 +24,17 @@ export class RpcObj {
     public host: string = "http://127.0.0.1:8080/";
 }
 
+export enum VarLv {
+    BOX, Flow,
+}
+
+export class VarVal {
+
+    public lv: VarLv;
+    public key: string;
+    public val: string;
+}
+
 export class Bridge {
 
     client = new Client();
@@ -35,8 +48,6 @@ export class Bridge {
     }
 
     public async getVar(key: string): Promise<string> {
-        
-        
         return new Promise((rev, rej) => {
             let qd: VarQuery = {
                 runFlowUid: this.rpcObj.uids.runFlowUid,
@@ -49,7 +60,6 @@ export class Bridge {
                 data: qd,
                 headers: { "Content-Type": "application/json" }
             };
-
             this.client.post(this.rpcObj.host + "/bridge/var"
                 , args, function (data, response) {
                 // parsed response body as js object
@@ -57,23 +67,12 @@ export class Bridge {
                 // raw response
                 console.log(response);
             });
-      
         });
     }
 
-    public async getData(): Promise<string> {
-
-        return new Promise<string>((rev, rej) => {
-
-            this.client.get("https://whattomine.com/coins.json", function (data, response) {
-                // parsed response body as js object
-                console.log(data);
-                // raw response
-                console.log(response);
-
-                rev(data);
-            });
-
-        });
+    public markVar(vv: VarVal) {
+        console.log(TAG + JSON.stringify(vv)+TAG);
     }
+
+
 }
