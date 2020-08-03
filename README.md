@@ -1,4 +1,4 @@
-#this is move to Graalvm version 
+# this project will move to Graalvm version 
 * this project will upgrade Graalvm
 * this prokect beta(dev) version move to git clone https://a29243004@bitbucket.org/a29243004/bzksrv.git
 * this graalvm new version will create new github repo(comming soon)
