@@ -1,6 +1,6 @@
 {
   "name": "bzk",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "AutoTradeBazookaFramework",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,7 +31,8 @@
     "@influxdata/influxdb-client": "^1.4.0",
     "daemon": "^1.1.0",
     "node-rest-client": "^3.1.0",
-    "properties": "^1.2.1"
+    "properties": "^1.2.1",
+    "typed-rest-client": "^1.7.3"
   },
   "repository": {
     "type": "git",
