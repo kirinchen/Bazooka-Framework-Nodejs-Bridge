@@ -19,7 +19,7 @@ export class Bridge {
         const qd: VarQuery = {
             runFlowUid: this.rpcObj.uids.runFlowUid,
             runBoxUid: this.rpcObj.uids.runBoxUid,
-            point: VarQueryPoint.box,
+            point: VarQueryPoint.not_specify,
             key
         };
         const url = this.rpcObj.host + "/bridge/var"
