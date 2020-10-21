@@ -1,12 +1,10 @@
 
-export enum VarQueryPoint {
-    not_specify, flow, box
-}
+
 
 export class VarQuery {
     public runFlowUid = '';
     public runBoxUid = '';
-    public point = VarQueryPoint.not_specify;
+    public point = VarLv.not_specify;
     public key = '';
 }
 
@@ -24,19 +22,19 @@ export class RpcObj {
 }
 
 export enum VarLv {
-    BOX, Flow,
+    not_specify = 'not_specify', run_flow = 'run_flow', run_box = 'run_box'
 }
 
 // tslint:disable-next-line: max-classes-per-file
 export class VarVal {
 
-    public lv = VarLv.BOX;
+    public lv = VarLv.not_specify;
     public key = '';
     public val = '';
 }
 
 export enum DataType {
-    string, number, Boolean, NULL, object, array, NotSupport,
+    string = 'string', number = 'number', Boolean = 'Boolean', NULL = 'NULL', object = 'object', array = 'array', NotSupport = 'NotSupport',
 }
 
 // tslint:disable-next-line: max-classes-per-file

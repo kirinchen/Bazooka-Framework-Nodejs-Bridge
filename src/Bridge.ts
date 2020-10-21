@@ -1,5 +1,5 @@
 import * as rm from 'typed-rest-client/RestClient';
-import { RpcObj, VarVal, ResultVal, VarQuery, VarQueryPoint } from './dtos';
+import { RpcObj, VarVal, ResultVal, VarQuery, VarLv } from './dtos';
 
 const TAG: string = "<BZK_VAR>";
 
@@ -19,7 +19,7 @@ export class Bridge {
         const qd: VarQuery = {
             runFlowUid: this.rpcObj.uids.runFlowUid,
             runBoxUid: this.rpcObj.uids.runBoxUid,
-            point: VarQueryPoint.not_specify,
+            point: VarLv.not_specify,
             key
         };
         const url = this.rpcObj.host + "/bridge/var"

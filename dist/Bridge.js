@@ -55,7 +55,7 @@ var Bridge = /** @class */ (function () {
                         qd = {
                             runFlowUid: this.rpcObj.uids.runFlowUid,
                             runBoxUid: this.rpcObj.uids.runBoxUid,
-                            point: dtos_1.VarQueryPoint.box,
+                            point: dtos_1.VarLv.not_specify,
                             key: key
                         };
                         url = this.rpcObj.host + "/bridge/var";

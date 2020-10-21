@@ -1,17 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ResultVal = exports.DataType = exports.VarVal = exports.VarLv = exports.RpcObj = exports.Uids = exports.VarQuery = exports.VarQueryPoint = void 0;
-var VarQueryPoint;
-(function (VarQueryPoint) {
-    VarQueryPoint[VarQueryPoint["not_specify"] = 0] = "not_specify";
-    VarQueryPoint[VarQueryPoint["flow"] = 1] = "flow";
-    VarQueryPoint[VarQueryPoint["box"] = 2] = "box";
-})(VarQueryPoint = exports.VarQueryPoint || (exports.VarQueryPoint = {}));
+exports.ResultVal = exports.DataType = exports.VarVal = exports.VarLv = exports.RpcObj = exports.Uids = exports.VarQuery = void 0;
 var VarQuery = /** @class */ (function () {
     function VarQuery() {
         this.runFlowUid = '';
         this.runBoxUid = '';
-        this.point = VarQueryPoint.not_specify;
+        this.point = VarLv.not_specify;
         this.key = '';
     }
     return VarQuery;
@@ -38,13 +32,14 @@ var RpcObj = /** @class */ (function () {
 exports.RpcObj = RpcObj;
 var VarLv;
 (function (VarLv) {
-    VarLv[VarLv["BOX"] = 0] = "BOX";
-    VarLv[VarLv["Flow"] = 1] = "Flow";
+    VarLv["not_specify"] = "not_specify";
+    VarLv["run_flow"] = "run_flow";
+    VarLv["run_box"] = "run_box";
 })(VarLv = exports.VarLv || (exports.VarLv = {}));
 // tslint:disable-next-line: max-classes-per-file
 var VarVal = /** @class */ (function () {
     function VarVal() {
-        this.lv = VarLv.BOX;
+        this.lv = VarLv.not_specify;
         this.key = '';
         this.val = '';
     }
@@ -53,13 +48,13 @@ var VarVal = /** @class */ (function () {
 exports.VarVal = VarVal;
 var DataType;
 (function (DataType) {
-    DataType[DataType["string"] = 0] = "string";
-    DataType[DataType["number"] = 1] = "number";
-    DataType[DataType["Boolean"] = 2] = "Boolean";
-    DataType[DataType["NULL"] = 3] = "NULL";
-    DataType[DataType["object"] = 4] = "object";
-    DataType[DataType["array"] = 5] = "array";
-    DataType[DataType["NotSupport"] = 6] = "NotSupport";
+    DataType["string"] = "string";
+    DataType["number"] = "number";
+    DataType["Boolean"] = "Boolean";
+    DataType["NULL"] = "NULL";
+    DataType["object"] = "object";
+    DataType["array"] = "array";
+    DataType["NotSupport"] = "NotSupport";
 })(DataType = exports.DataType || (exports.DataType = {}));
 // tslint:disable-next-line: max-classes-per-file
 var ResultVal = /** @class */ (function () {
