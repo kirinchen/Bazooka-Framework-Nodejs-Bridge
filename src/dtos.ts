@@ -19,6 +19,8 @@ export class Uids {
 export class RpcObj {
     public uids = new Uids();
     public host: string = "http://127.0.0.1:8080/";
+    public boxVars = {};
+    public flowVars = {};
 }
 
 export enum VarLv {

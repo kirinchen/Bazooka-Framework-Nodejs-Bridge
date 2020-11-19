@@ -36,17 +36,46 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Bridge = void 0;
+exports.QKey = exports.Bridge = void 0;
 var rm = require("typed-rest-client/RestClient");
 var dtos_1 = require("./dtos");
 var TAG = "<BZK_VAR>";
+var PRFIX_BOX = "@";
+var PRFIX_FLOW = "~";
 var Bridge = /** @class */ (function () {
     function Bridge(ro) {
         this.rest = new rm.RestClient('typed-rest-client');
         this.rpcObj = new dtos_1.RpcObj();
+        this.setRecords = new Array();
         this.rpcObj = ro;
     }
-    Bridge.prototype.getVar = function (key) {
+    Bridge.prototype.get = function (key) {
+        var k = Bridge.qKey(key);
+        return this.getByQkey(k);
+    };
+    Bridge.prototype.getByQkey = function (k) {
+        var fo = k.getVal(this.rpcObj.flowVars);
+        var bo = k.getVal(this.rpcObj.boxVars);
+        if (k.lv === dtos_1.VarLv.run_box)
+            return bo;
+        if (k.lv === dtos_1.VarLv.run_flow)
+            return fo;
+        if (bo)
+            return bo;
+        return fo;
+    };
+    Bridge.prototype.set = function (key, v) {
+        var k = Bridge.qKey(key);
+        if (k.lv === dtos_1.VarLv.not_specify || k.lv === dtos_1.VarLv.run_box)
+            k.setVal(this.rpcObj.boxVars, v);
+        if (k.lv === dtos_1.VarLv.run_flow)
+            k.setVal(this.rpcObj.flowVars, v);
+        var ek = this.setRecords.filter(function (r) { return r.lv === k.lv && r.key === k.key; });
+        if (ek && ek.length > 0)
+            return;
+        this.setRecords.push(k);
+    };
+    Bridge.prototype.fetch = function (key) {
         return __awaiter(this, void 0, void 0, function () {
             var qd, url, resu;
             return __generator(this, function (_a) {
@@ -58,7 +87,7 @@ var Bridge = /** @class */ (function () {
                             point: dtos_1.VarLv.not_specify,
                             key: key
                         };
-                        url = this.rpcObj.host + "/bridge/var";
+                        url = this.rpcObj.host + "/bridge/var/";
                         return [4 /*yield*/, this.rest.create(url, qd)];
                     case 1:
                         resu = _a.sent();
@@ -67,9 +96,21 @@ var Bridge = /** @class */ (function () {
             });
         });
     };
+    Bridge.prototype.ouputSets = function () {
+        for (var _i = 0, _a = this.setRecords; _i < _a.length; _i++) {
+            var rk = _a[_i];
+            var vv = {
+                key: rk.key,
+                lv: rk.lv,
+                val: this.getByQkey(rk)
+            };
+            this.markVar(vv);
+        }
+    };
     Bridge.prototype.markVar = function (vv) {
         // tslint:disable-next-line: no-console
-        console.log(TAG + JSON.stringify(vv) + TAG);
+        var pl = '${' + JSON.stringify(vv) + '}';
+        console.log(pl);
     };
     Bridge.getInstance = function () {
         return Bridge.instance;
@@ -78,7 +119,51 @@ var Bridge = /** @class */ (function () {
         Bridge.instance = new Bridge(ro);
         return Bridge.instance;
     };
+    Bridge.qKey = function (str) {
+        if (str.startsWith(PRFIX_BOX))
+            return new QKey(dtos_1.VarLv.run_box, str.replace(PRFIX_BOX, ''));
+        if (str.startsWith(PRFIX_FLOW))
+            return new QKey(dtos_1.VarLv.run_flow, str.replace(PRFIX_FLOW, ''));
+        return new QKey(dtos_1.VarLv.not_specify, str);
+    };
     return Bridge;
 }());
 exports.Bridge = Bridge;
+// tslint:disable-next-line: max-classes-per-file
+var QKey = /** @class */ (function () {
+    function QKey(l, k) {
+        this.lv = dtos_1.VarLv.not_specify;
+        this.key = '';
+        this.lv = l;
+        this.key = k;
+    }
+    QKey.prototype.rollKeys = function () {
+        return this.key.split('.');
+    };
+    QKey.prototype.getVal = function (o) {
+        var m = o;
+        for (var _i = 0, _a = this.rollKeys(); _i < _a.length; _i++) {
+            var k = _a[_i];
+            if (!m[k])
+                return null;
+            m = m[k];
+        }
+        return m;
+    };
+    QKey.prototype.setVal = function (o, v) {
+        var ps = this.rollKeys();
+        var jm = o;
+        var i = 0;
+        while (i < ps.length - 1) {
+            if (!jm[ps[i]]) {
+                jm[ps[i]] = {};
+            }
+            jm = jm[ps[i]];
+            i++;
+        }
+        jm[ps[i]] = v;
+    };
+    return QKey;
+}());
+exports.QKey = QKey;
 //# sourceMappingURL=Bridge.js.map

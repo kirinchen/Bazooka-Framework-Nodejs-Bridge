@@ -26,6 +26,8 @@ var RpcObj = /** @class */ (function () {
     function RpcObj() {
         this.uids = new Uids();
         this.host = "http://127.0.0.1:8080/";
+        this.boxVars = {};
+        this.flowVars = {};
     }
     return RpcObj;
 }());
